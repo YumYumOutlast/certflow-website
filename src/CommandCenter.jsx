@@ -44,7 +44,26 @@ const INIT_FIN = {
   income:[{id:1,label:"Dylan Net",amount:6499.68},{id:2,label:"Chantel Net",amount:3020.90}],
   fixed:[{id:10,label:"Rent",amount:2200},{id:11,label:"Gas (Car)",amount:435},{id:12,label:"Groceries",amount:868},{id:13,label:"Investments",amount:190}],
   variable:[{id:20,label:"Expedition",amount:805},{id:21,label:"Truck",amount:451},{id:22,label:"Capital One CC",amount:327},{id:23,label:"AT&T",amount:293},{id:24,label:"Insurance",amount:250},{id:25,label:"Amazon CC",amount:194},{id:26,label:"Mission Lane-D",amount:180},{id:27,label:"Business CC",amount:176},{id:28,label:"Storage",amount:170},{id:29,label:"Nails",amount:165},{id:30,label:"Loan",amount:142},{id:31,label:"Affirm",amount:123},{id:32,label:"Mission Lane-C",amount:120},{id:33,label:"Dance",amount:110},{id:34,label:"Attorney",amount:78},{id:35,label:"Power",amount:76},{id:36,label:"School Lunch",amount:65},{id:37,label:"Jefferson Atty",amount:50},{id:38,label:"Cap One-C",amount:49},{id:39,label:"ADT",amount:47},{id:40,label:"Testosterone",amount:40},{id:41,label:"Savor CC",amount:40},{id:42,label:"Straight Talk",amount:38},{id:43,label:"Hulu+Disney",amount:36},{id:44,label:"Gas Bill",amount:29},{id:45,label:"Medical-C",amount:28},{id:46,label:"Netflix",amount:18},{id:47,label:"Apple Music",amount:17},{id:48,label:"Amazon Prime",amount:15},{id:49,label:"Crunchyroll",amount:8}],
-  debt:[{id:60,label:"Deposit",total:683,monthly:0,priority:1},{id:61,label:"Dentist",total:1300,monthly:0,priority:2},{id:62,label:"Affirm(31%)",total:1703,monthly:123,priority:3},{id:63,label:"1Mo Reserve",total:8000,monthly:0,priority:4},{id:64,label:"ML-Chantel",total:2743,monthly:120,priority:5},{id:65,label:"CapOne-Dylan",total:4031,monthly:180,priority:6},{id:66,label:"CapOne-Chantel",total:1082,monthly:49,priority:7},{id:67,label:"Amazon(26%)",total:4512,monthly:194,priority:8},{id:68,label:"CapOne-D",total:7876,monthly:327,priority:9},{id:69,label:"Savor(27%)",total:393,monthly:40,priority:10},{id:70,label:"Biz CC(18%)",total:4829,monthly:179,priority:11},{id:71,label:"Loan(16%)",total:2985,monthly:142,priority:12},{id:72,label:"Expedition(7.6%)",total:47901,monthly:805,priority:13},{id:73,label:"Truck(7.7%)",total:20520,monthly:451,priority:14},{id:74,label:"Student(5.5%)",total:7030,monthly:0,priority:15},{id:75,label:"Medical-C(0%)",total:332,monthly:25,priority:16},{id:76,label:"Attorneys(0%)",total:2640,monthly:75,priority:17},{id:77,label:"Jeff Atty(0%)",total:6120,monthly:50,priority:18}],
+  debt:[
+    {id:60,label:"Deposit",total:683,monthly:0,priority:1,due:"",url:"",rate:"0%"},
+    {id:61,label:"Dentist",total:1300,monthly:0,priority:2,due:"",url:"",rate:"0%"},
+    {id:62,label:"Affirm",total:1703,monthly:123,priority:3,due:"15",url:"https://www.affirm.com/user/sign-in",rate:"31%"},
+    {id:63,label:"1Mo Reserve",total:8000,monthly:0,priority:4,due:"",url:"",rate:"0%"},
+    {id:64,label:"ML-Chantel",total:2743,monthly:120,priority:5,due:"",url:"https://portal.missionlane.com/",rate:"26%"},
+    {id:65,label:"CapOne-Dylan",total:4031,monthly:180,priority:6,due:"",url:"https://www.capitalone.com/sign-in/",rate:"24%"},
+    {id:66,label:"CapOne-Chantel",total:1082,monthly:49,priority:7,due:"",url:"https://www.capitalone.com/sign-in/",rate:"24%"},
+    {id:67,label:"Amazon CC",total:4512,monthly:194,priority:8,due:"",url:"https://www.amazon.com/gp/payments",rate:"26%"},
+    {id:68,label:"CapOne-D",total:7876,monthly:327,priority:9,due:"",url:"https://www.capitalone.com/sign-in/",rate:"24%"},
+    {id:69,label:"Savor CC",total:393,monthly:40,priority:10,due:"",url:"https://www.capitalone.com/sign-in/",rate:"27%"},
+    {id:70,label:"Biz CC",total:4829,monthly:179,priority:11,due:"",url:"https://www.capitalone.com/sign-in/",rate:"18%"},
+    {id:71,label:"Loan",total:2985,monthly:142,priority:12,due:"",url:"",rate:"16%"},
+    {id:72,label:"Expedition",total:47901,monthly:805,priority:13,due:"",url:"https://www.ford.com/finance/",rate:"7.6%"},
+    {id:73,label:"Truck",total:20520,monthly:451,priority:14,due:"",url:"",rate:"7.7%"},
+    {id:74,label:"Student",total:7030,monthly:0,priority:15,due:"",url:"https://studentaid.gov/",rate:"5.5%"},
+    {id:75,label:"Medical-C",total:332,monthly:25,priority:16,due:"",url:"",rate:"0%"},
+    {id:76,label:"Attorneys",total:2640,monthly:75,priority:17,due:"",url:"",rate:"0%"},
+    {id:77,label:"Jeff Atty",total:6120,monthly:50,priority:18,due:"",url:"",rate:"0%"},
+  ],
 };
 
 // ═══ CRM DATA ═══
@@ -329,21 +348,64 @@ function FinanceTab({data,setData}) {
         {sec==="debt"&&(<div>
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10}}>
             <div style={{fontSize:15,fontWeight:700,color:"#f0e8d8",fontFamily:"'Playfair Display',Georgia,serif"}}>Debt Payoff (Avalanche)</div>
-            <button onClick={()=>add("debt")} style={{background:"rgba(142,68,173,0.1)",border:"1px solid rgba(142,68,173,0.3)",borderRadius:6,padding:"5px 12px",color:"#8E44AD",fontSize:9,fontFamily:"monospace",cursor:"pointer"}}>+ ADD</button>
+            <button onClick={()=>{const id=Date.now();setData(p=>({...p,debt:[...p.debt,{id,label:"New",total:0,monthly:0,priority:p.debt.length+1,due:"",url:"",rate:"0%"}]}));}} style={{background:"rgba(142,68,173,0.1)",border:"1px solid rgba(142,68,173,0.3)",borderRadius:6,padding:"5px 12px",color:"#8E44AD",fontSize:9,fontFamily:"monospace",cursor:"pointer"}}>+ ADD</button>
           </div>
-          <div style={{background:"rgba(255,255,255,0.02)",border:"1px solid rgba(142,68,173,0.15)",borderRadius:10,overflow:"hidden"}}>
-            {[...data.debt].sort((a,b)=>a.priority-b.priority).map(d=>(
-              <div key={d.id} style={{display:"grid",gridTemplateColumns:"20px 1fr 85px 75px 45px 24px",gap:3,padding:"7px 10px",borderBottom:"1px solid rgba(255,255,255,0.04)",alignItems:"center"}}>
-                <div style={{fontSize:9,color:"#445",fontFamily:"monospace"}}>{d.priority}</div>
-                <input value={d.label} onChange={e=>upd("debt",d.id,"label",e.target.value)} style={{background:"transparent",border:"none",color:"#8aaccf",fontSize:11,fontFamily:"monospace",outline:"none"}} />
-                <input value={d.total} onChange={e=>upd("debt",d.id,"total",toNum(e.target.value))} style={{background:"rgba(142,68,173,0.06)",border:"1px solid rgba(142,68,173,0.15)",borderRadius:4,padding:"3px 6px",color:"#a880d0",fontSize:10,fontFamily:"monospace",outline:"none",textAlign:"right"}} />
-                <input value={d.monthly} onChange={e=>upd("debt",d.id,"monthly",toNum(e.target.value))} style={{background:"rgba(142,68,173,0.06)",border:"1px solid rgba(142,68,173,0.15)",borderRadius:4,padding:"3px 6px",color:"#c8a0e0",fontSize:10,fontFamily:"monospace",outline:"none",textAlign:"right"}} />
-                <div style={{fontSize:9,color:"#E8A020",fontFamily:"monospace"}}>{d.monthly>0?Math.ceil(d.total/d.monthly)+"mo":"—"}</div>
-                <button onClick={()=>del("debt",d.id)} style={{background:"none",border:"none",color:"#C0392B",cursor:"pointer",fontSize:14,opacity:0.4}}>×</button>
+          <div style={{display:"flex",flexDirection:"column",gap:6}}>
+            {[...data.debt].sort((a,b)=>a.priority-b.priority).map(d=>{
+              const rateNum=parseFloat(d.rate)||0;
+              const rateColor=rateNum>=25?"#C0392B":rateNum>=15?"#E8A020":rateNum>=5?"#2E86C1":"#1A8A4A";
+              const moLeft=d.monthly>0?Math.ceil(d.total/d.monthly):0;
+              return(
+              <div key={d.id} style={{background:"rgba(255,255,255,0.02)",border:"1px solid rgba(142,68,173,0.12)",borderRadius:10,padding:"12px 14px",borderLeft:"3px solid "+rateColor}}>
+                <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:8}}>
+                  <div style={{display:"flex",alignItems:"center",gap:8,flex:1}}>
+                    <div style={{fontSize:10,color:"#445",fontFamily:"monospace",width:16}}>{d.priority}</div>
+                    <input value={d.label} onChange={e=>upd("debt",d.id,"label",e.target.value)} style={{background:"transparent",border:"none",color:"#c8c0b0",fontSize:13,fontFamily:"'DM Sans',sans-serif",fontWeight:600,outline:"none",flex:1}} />
+                  </div>
+                  <div style={{display:"flex",alignItems:"center",gap:6}}>
+                    <div style={{padding:"2px 6px",borderRadius:4,background:rateColor+"18",fontSize:9,color:rateColor,fontFamily:"monospace",fontWeight:700}}>{d.rate||"0%"}</div>
+                    {d.url&&<a href={d.url} target="_blank" rel="noreferrer" onClick={e=>e.stopPropagation()} style={{padding:"3px 8px",borderRadius:5,background:"rgba(26,138,74,0.12)",border:"1px solid rgba(26,138,74,0.3)",color:"#1A8A4A",fontSize:8,fontFamily:"monospace",textDecoration:"none",fontWeight:700,cursor:"pointer"}}>PAY NOW ↗</a>}
+                    <button onClick={()=>del("debt",d.id)} style={{background:"none",border:"none",color:"#C0392B",cursor:"pointer",fontSize:14,opacity:0.3}}>×</button>
+                  </div>
+                </div>
+                <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr 1fr",gap:6,marginBottom:8}}>
+                  <div>
+                    <div style={{fontSize:7,color:"#556",fontFamily:"monospace",marginBottom:2}}>BALANCE</div>
+                    <input value={d.total} onChange={e=>upd("debt",d.id,"total",toNum(e.target.value))} style={{width:"100%",background:"rgba(142,68,173,0.06)",border:"1px solid rgba(142,68,173,0.15)",borderRadius:4,padding:"4px 6px",color:"#a880d0",fontSize:11,fontFamily:"monospace",outline:"none",textAlign:"right",boxSizing:"border-box"}} />
+                  </div>
+                  <div>
+                    <div style={{fontSize:7,color:"#556",fontFamily:"monospace",marginBottom:2}}>MONTHLY</div>
+                    <input value={d.monthly} onChange={e=>upd("debt",d.id,"monthly",toNum(e.target.value))} style={{width:"100%",background:"rgba(142,68,173,0.06)",border:"1px solid rgba(142,68,173,0.15)",borderRadius:4,padding:"4px 6px",color:"#c8a0e0",fontSize:11,fontFamily:"monospace",outline:"none",textAlign:"right",boxSizing:"border-box"}} />
+                  </div>
+                  <div>
+                    <div style={{fontSize:7,color:"#556",fontFamily:"monospace",marginBottom:2}}>DUE DAY</div>
+                    <input value={d.due||""} onChange={e=>upd("debt",d.id,"due",e.target.value)} placeholder="15" style={{width:"100%",background:"rgba(232,160,32,0.06)",border:"1px solid rgba(232,160,32,0.15)",borderRadius:4,padding:"4px 6px",color:"#E8A020",fontSize:11,fontFamily:"monospace",outline:"none",textAlign:"center",boxSizing:"border-box"}} />
+                  </div>
+                  <div>
+                    <div style={{fontSize:7,color:"#556",fontFamily:"monospace",marginBottom:2}}>RATE</div>
+                    <input value={d.rate||""} onChange={e=>upd("debt",d.id,"rate",e.target.value)} placeholder="0%" style={{width:"100%",background:rateColor+"0a",border:"1px solid "+rateColor+"25",borderRadius:4,padding:"4px 6px",color:rateColor,fontSize:11,fontFamily:"monospace",outline:"none",textAlign:"center",boxSizing:"border-box"}} />
+                  </div>
+                </div>
+                <div>
+                  <div style={{fontSize:7,color:"#556",fontFamily:"monospace",marginBottom:2}}>PAY URL</div>
+                  <input value={d.url||""} onChange={e=>upd("debt",d.id,"url",e.target.value)} placeholder="https://..." style={{width:"100%",background:"rgba(26,138,74,0.04)",border:"1px solid rgba(26,138,74,0.12)",borderRadius:4,padding:"4px 6px",color:"#1A8A4A",fontSize:9,fontFamily:"monospace",outline:"none",boxSizing:"border-box"}} />
+                </div>
+                {d.monthly>0&&<div style={{marginTop:8}}>
+                  <div style={{display:"flex",justifyContent:"space-between",marginBottom:3}}>
+                    <div style={{fontSize:8,color:"#556",fontFamily:"monospace"}}>{moLeft} months remaining</div>
+                    <div style={{fontSize:8,color:"#E8A020",fontFamily:"monospace"}}>{f$(d.total)}</div>
+                  </div>
+                  <div style={{height:4,background:"rgba(255,255,255,0.06)",borderRadius:2,overflow:"hidden"}}>
+                    <div style={{height:"100%",width:Math.max(2,100-Math.min(moLeft*2,100))+"%",background:"linear-gradient(90deg,#1A8A4A,#E8A020)",borderRadius:2,transition:"width 0.3s"}} />
+                  </div>
+                </div>}
               </div>
-            ))}
+            );})}
           </div>
-          <div style={{textAlign:"right",marginTop:8,fontSize:11,color:"#8E44AD",fontFamily:"monospace"}}>Total: {f$(debt)}</div>
+          <div style={{display:"flex",justifyContent:"space-between",marginTop:12}}>
+            <div style={{fontSize:11,color:"#8E44AD",fontFamily:"monospace"}}>Total Debt: {f$(debt)}</div>
+            <div style={{fontSize:11,color:"#E8A020",fontFamily:"monospace"}}>Monthly Payments: {f$(data.debt.reduce((a,d)=>a+d.monthly,0))}</div>
+          </div>
         </div>)}
       </div>
     </div>
