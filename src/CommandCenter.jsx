@@ -30,7 +30,7 @@ const ADVISORS = [
   {id:"margaret",name:"Margaret",av:"M",c:"#8E44AD",role:"Legal Counsel",bio:"35 years in insurance law and IP protection. Drafted hundreds of MSAs. Knows the line between admin service and agent activity.",
     sys:CERTFLOW_CTX+"\n\nYou are Margaret, Dylan's Legal Counsel advisor. 35 years insurance law. You advise on MSA language (admin services ONLY, not agent/broker), data processing agreements, E&O insurance requirements, LLC formation, trademark/IP protection for CertFlow. You flag legal risks and draft protective language. You're thorough but practical — Dylan has limited budget so prioritize what matters most."},
   {id:"david",name:"David",av:"D",c:"#1A8A4A",role:"Financial Advisor",bio:"40 years in small business finance. Manages Dylan's full financial picture — personal debt, household budget, CertFlow revenue projections, and the path to financial freedom.",
-    sys:CERTFLOW_CTX+"\n\nYou are David, Dylan's Financial Advisor. 40 years small business finance. You have full context on Dylan's finances: household net income ~$9,520/mo, expenses ~$8,200/mo, total debt ~$116K (including vehicles, credit cards, student loans, medical). Current surplus ~$1,320/mo. CertFlow founding rate $299/mo, costs ~$30-50/mo per client to serve. You advise on debt payoff priority (avalanche method targeting highest interest first), when Dylan can afford to quit trucking, break-even analysis, tax planning, and investment timing. Be specific with numbers."},
+    sys:CERTFLOW_CTX+"\n\nYou are David, Dylan's Financial Advisor. 40 years small business finance. REAL FINANCIAL DATA (from 7 months MACU bank analysis, Sep 2025 - Mar 2026): Avg income $12,767/mo, avg expenses $13,088/mo, avg deficit ~$321/mo. Income sources: Dylan B5 Trucking + Wanship payroll, Chantel MarketStar payroll, mobile check deposits, IRS refund. Top spending: Rent $1,890/mo (Orchard Cove), internal transfers to Golden West CU for vehicle payments ~$4,237/mo, groceries $690/mo (WinCo/Walmart/Harmons), Amazon $311/mo, dining $278/mo, online services $352/mo, insurance $222/mo, healthcare $212/mo, gas $133/mo. Total debt ~$116K. Vehicles through Golden West CU. CRITICAL: Only ~$321/mo deficit means TWO CertFlow clients at $299/mo puts them in the green. 5 clients = +$1,174/mo surplus. 10 clients = +$2,669/mo. Be specific with numbers. Advise on spending cuts (Amazon, dining, subscriptions are easiest targets), debt avalanche, and CertFlow milestones."},
   {id:"rosa",name:"Rosa",av:"R",c:"#C0392B",role:"Operations",bio:"36 years in operations and process engineering. Builds SOPs that a VA can follow. Obsessed with removing bottlenecks and measuring everything.",
     sys:CERTFLOW_CTX+"\n\nYou are Rosa, Dylan's Operations advisor. 36 years ops experience. You build SOPs, onboarding workflows, QC checklists, and capacity plans. You advise on: how many clients one person can handle (3-5 before needing VA), what breaks first at scale, onboarding process for new agency clients, error monitoring, and KPIs to track. You're precise and process-oriented."},
   {id:"marcus",name:"Marcus",av:"MC",c:"#00C9A7",role:"Tech Lead",bio:"40 years in software architecture. Knows when to build and when to buy. Keeps the tech stack simple and reliable.",
@@ -57,8 +57,8 @@ const INIT_FIN = {
     {id:69,label:"Savor CC",total:393,monthly:40,priority:10,due:"",url:"https://www.capitalone.com/sign-in/",rate:"27%"},
     {id:70,label:"Biz CC",total:4829,monthly:179,priority:11,due:"",url:"https://www.capitalone.com/sign-in/",rate:"18%"},
     {id:71,label:"Loan",total:2985,monthly:142,priority:12,due:"",url:"",rate:"16%"},
-    {id:72,label:"Expedition",total:47901,monthly:805,priority:13,due:"",url:"https://www.ford.com/finance/",rate:"7.6%"},
-    {id:73,label:"Truck",total:20520,monthly:451,priority:14,due:"",url:"",rate:"7.7%"},
+    {id:72,label:"Expedition",total:47901,monthly:805,priority:13,due:"",url:"https://www.goldenwestcu.com/",rate:"7.6%"},
+    {id:73,label:"Truck",total:20520,monthly:451,priority:14,due:"",url:"https://www.goldenwestcu.com/",rate:"7.7%"},
     {id:74,label:"Student",total:7030,monthly:0,priority:15,due:"",url:"https://studentaid.gov/",rate:"5.5%"},
     {id:75,label:"Medical-C",total:332,monthly:25,priority:16,due:"",url:"",rate:"0%"},
     {id:76,label:"Attorneys",total:2640,monthly:75,priority:17,due:"",url:"",rate:"0%"},
@@ -120,14 +120,14 @@ function Lock({onUnlock}) {
   const go=()=>{if(pw===PW){onUnlock();return;}setShake(true);setTimeout(()=>setShake(false),400);setPw("");setAtt(a=>a+1);};
   return (
     <div style={{minHeight:"100vh",background:"#060A12",display:"flex",alignItems:"center",justifyContent:"center",flexDirection:"column"}}>
-      <div style={{fontSize:48,fontWeight:900,color:"#E8A020",fontFamily:"'Playfair Display',Georgia,serif",letterSpacing:6,marginBottom:4}}>CERTFLOW</div>
-      <div style={{fontSize:10,color:"#445",letterSpacing:6,fontFamily:"monospace",marginBottom:40}}>COMMAND CENTER v3</div>
+      <div style={{fontSize:52,fontWeight:900,color:"#E8A020",fontFamily:"'Playfair Display',Georgia,serif",letterSpacing:6,marginBottom:4}}>CERTFLOW</div>
+      <div style={{fontSize:14,color:"#445",letterSpacing:6,fontFamily:"monospace",marginBottom:40}}>COMMAND CENTER v3</div>
       <div style={{transform:shake?"translateX(8px)":"none",transition:"transform 0.05s",width:300}}>
         <div style={{background:"rgba(255,255,255,0.02)",border:"1px solid rgba(232,160,32,0.18)",borderRadius:16,padding:28}}>
           <input type="password" value={pw} onChange={e=>setPw(e.target.value)} onKeyDown={e=>e.key==="Enter"&&go()} placeholder="Password" autoFocus
-            style={{width:"100%",background:"rgba(232,160,32,0.05)",border:"1px solid rgba(232,160,32,0.2)",borderRadius:8,padding:"12px 14px",color:"#e0d0a0",fontSize:14,fontFamily:"monospace",outline:"none",marginBottom:10,letterSpacing:4,boxSizing:"border-box"}} />
-          <button onClick={go} style={{width:"100%",padding:"11px",background:"linear-gradient(135deg,#B8860B,#E8A020)",borderRadius:8,border:"none",color:"#060A12",fontSize:12,fontWeight:700,fontFamily:"monospace",letterSpacing:3,cursor:"pointer"}}>UNLOCK</button>
-          {att>=3&&<div style={{textAlign:"center",marginTop:8,fontSize:10,color:"#C0392B",fontFamily:"monospace"}}>certflow2024</div>}
+            style={{width:"100%",background:"rgba(232,160,32,0.05)",border:"1px solid rgba(232,160,32,0.2)",borderRadius:8,padding:"12px 14px",color:"#e0d0a0",fontSize:18,fontFamily:"monospace",outline:"none",marginBottom:10,letterSpacing:4,boxSizing:"border-box"}} />
+          <button onClick={go} style={{width:"100%",padding:"11px",background:"linear-gradient(135deg,#B8860B,#E8A020)",borderRadius:8,border:"none",color:"#060A12",fontSize:16,fontWeight:700,fontFamily:"monospace",letterSpacing:3,cursor:"pointer"}}>UNLOCK</button>
+          {att>=3&&<div style={{textAlign:"center",marginTop:8,fontSize:14,color:"#C0392B",fontFamily:"monospace"}}>certflow2024</div>}
         </div>
       </div>
     </div>
@@ -157,39 +157,39 @@ function AdvisorChat({advisor}) {
         <div style={{display:"flex",alignItems:"center",gap:12}}>
           <div style={{width:42,height:42,borderRadius:"50%",background:advisor.c+"22",border:"2px solid "+advisor.c,display:"flex",alignItems:"center",justifyContent:"center",fontSize:advisor.av.length>1?11:16,fontWeight:900,color:advisor.c,fontFamily:"monospace"}}>{advisor.av}</div>
           <div>
-            <div style={{fontSize:15,fontWeight:700,color:"#f0e8d8",fontFamily:"'Playfair Display',Georgia,serif"}}>{advisor.name} <span style={{fontSize:11,color:advisor.c,fontFamily:"monospace"}}>{advisor.role}</span></div>
-            <div style={{fontSize:10,color:"#556",fontFamily:"monospace",marginTop:2}}>{advisor.bio.substring(0,80)}...</div>
+            <div style={{fontSize:19,fontWeight:700,color:"#f0e8d8",fontFamily:"'Playfair Display',Georgia,serif"}}>{advisor.name} <span style={{fontSize:15,color:advisor.c,fontFamily:"monospace"}}>{advisor.role}</span></div>
+            <div style={{fontSize:14,color:"#556",fontFamily:"monospace",marginTop:2}}>{advisor.bio.substring(0,80)}...</div>
           </div>
         </div>
       </div>
       <div style={{flex:1,overflowY:"auto",padding:"16px 18px",display:"flex",flexDirection:"column",gap:12}}>
         {msgs.length===0&&!ld&&(
           <div style={{textAlign:"center",padding:"60px 20px",color:"#334"}}>
-            <div style={{fontSize:36,marginBottom:12}}>{advisor.id==="ai"?"🤖":"💼"}</div>
-            <div style={{fontSize:13,color:advisor.c,fontFamily:"'Playfair Display',Georgia,serif"}}>Ask {advisor.name} anything</div>
-            <div style={{fontSize:10,color:"#445",fontFamily:"monospace",marginTop:6}}>{advisor.role}</div>
+            <div style={{fontSize:40,marginBottom:12}}>{advisor.id==="ai"?"🤖":"💼"}</div>
+            <div style={{fontSize:17,color:advisor.c,fontFamily:"'Playfair Display',Georgia,serif"}}>Ask {advisor.name} anything</div>
+            <div style={{fontSize:14,color:"#445",fontFamily:"monospace",marginTop:6}}>{advisor.role}</div>
           </div>
         )}
         {msgs.map(m=>(
           m.role==="user"?(
             <div key={m.id} style={{display:"flex",justifyContent:"flex-end"}}>
-              <div style={{maxWidth:"75%",background:"rgba(232,160,32,0.08)",border:"1px solid rgba(232,160,32,0.2)",borderRadius:"14px 4px 14px 14px",padding:"10px 14px",fontSize:13,color:"#e0d0a0",fontFamily:"'DM Sans',sans-serif",lineHeight:1.7}}>{m.text}</div>
+              <div style={{maxWidth:"75%",background:"rgba(232,160,32,0.08)",border:"1px solid rgba(232,160,32,0.2)",borderRadius:"14px 4px 14px 14px",padding:"10px 14px",fontSize:17,color:"#e0d0a0",fontFamily:"'DM Sans',sans-serif",lineHeight:1.7}}>{m.text}</div>
             </div>
           ):(
             <div key={m.id} style={{display:"flex",gap:10}}>
               <div style={{width:28,height:28,borderRadius:"50%",background:advisor.c+"22",border:"2px solid "+advisor.c+"55",display:"flex",alignItems:"center",justifyContent:"center",fontSize:advisor.av.length>1?7:10,fontWeight:900,color:advisor.c,fontFamily:"monospace",flexShrink:0,marginTop:2}}>{advisor.av}</div>
-              <div style={{maxWidth:"80%",background:"rgba(255,255,255,0.025)",border:"1px solid "+advisor.c+"18",borderRadius:"4px 14px 14px 14px",padding:"10px 14px",fontSize:13,color:"#c8c0b0",fontFamily:"'DM Sans',sans-serif",lineHeight:1.7,whiteSpace:"pre-wrap"}}>{m.text}</div>
+              <div style={{maxWidth:"80%",background:"rgba(255,255,255,0.025)",border:"1px solid "+advisor.c+"18",borderRadius:"4px 14px 14px 14px",padding:"10px 14px",fontSize:17,color:"#c8c0b0",fontFamily:"'DM Sans',sans-serif",lineHeight:1.7,whiteSpace:"pre-wrap"}}>{m.text}</div>
             </div>
           )
         ))}
-        {ld&&<div style={{fontSize:11,color:advisor.c,fontFamily:"monospace",padding:8}}>{advisor.name} is thinking...</div>}
+        {ld&&<div style={{fontSize:15,color:advisor.c,fontFamily:"monospace",padding:8}}>{advisor.name} is thinking...</div>}
         <div ref={ref}/>
       </div>
       <div style={{padding:"12px 18px",borderTop:"1px solid "+advisor.c+"15",background:"rgba(0,0,0,0.25)",flexShrink:0}}>
         <div style={{display:"flex",gap:8}}>
           <input value={inp} onChange={e=>setInp(e.target.value)} onKeyDown={e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();send();}}} placeholder={"Ask "+advisor.name+"..."}
-            style={{flex:1,background:advisor.c+"08",border:"1px solid "+advisor.c+"20",borderRadius:10,padding:"10px 14px",color:"#e0d0a0",fontSize:13,fontFamily:"'DM Sans',sans-serif",outline:"none"}} />
-          <button onClick={send} disabled={ld||!inp.trim()} style={{padding:"10px 16px",borderRadius:10,background:inp.trim()&&!ld?"linear-gradient(135deg,#B8860B,#E8A020)":"rgba(255,255,255,0.04)",border:"none",color:inp.trim()&&!ld?"#060A12":"#556",fontSize:12,fontWeight:700,fontFamily:"monospace",cursor:inp.trim()&&!ld?"pointer":"not-allowed"}}>▶</button>
+            style={{flex:1,background:advisor.c+"08",border:"1px solid "+advisor.c+"20",borderRadius:10,padding:"10px 14px",color:"#e0d0a0",fontSize:17,fontFamily:"'DM Sans',sans-serif",outline:"none"}} />
+          <button onClick={send} disabled={ld||!inp.trim()} style={{padding:"10px 16px",borderRadius:10,background:inp.trim()&&!ld?"linear-gradient(135deg,#B8860B,#E8A020)":"rgba(255,255,255,0.04)",border:"none",color:inp.trim()&&!ld?"#060A12":"#556",fontSize:16,fontWeight:700,fontFamily:"monospace",cursor:inp.trim()&&!ld?"pointer":"not-allowed"}}>▶</button>
         </div>
       </div>
     </div>
@@ -206,7 +206,7 @@ function AdvisorsTab() {
         {ADVISORS.map(a=>{const s=a.id===sel;return(
           <div key={a.id} onClick={()=>setSel(a.id)} style={{padding:"8px 4px",borderRadius:8,cursor:"pointer",background:s?a.c+"15":"transparent",border:s?"1px solid "+a.c+"40":"1px solid transparent",textAlign:"center",transition:"all 0.15s"}}>
             <div style={{width:36,height:36,borderRadius:"50%",background:a.c+"22",border:"2px solid "+(s?a.c:a.c+"44"),display:"flex",alignItems:"center",justifyContent:"center",fontSize:a.av.length>1?9:13,fontWeight:900,color:a.c,fontFamily:"monospace",margin:"0 auto 4px"}}>{a.av}</div>
-            <div style={{fontSize:7,fontWeight:700,color:s?a.c:"#556",fontFamily:"monospace"}}>{a.name}</div>
+            <div style={{fontSize:11,fontWeight:700,color:s?a.c:"#556",fontFamily:"monospace"}}>{a.name}</div>
           </div>
         );})}
       </div>
@@ -235,50 +235,50 @@ function CRMTab({leads,setLeads}) {
   return (
     <div style={{display:"flex",flexDirection:"column",height:"100%",overflow:"hidden"}}>
       <div style={{padding:"14px 18px",borderBottom:"1px solid rgba(232,160,32,0.1)",display:"flex",justifyContent:"space-between",alignItems:"center",flexShrink:0}}>
-        <div><div style={{fontSize:16,fontWeight:700,color:"#f0e8d8",fontFamily:"'Playfair Display',Georgia,serif"}}>Sales Pipeline</div>
-        <div style={{fontSize:10,color:"#556",fontFamily:"monospace"}}>{leads.length} leads • {leads.filter(l=>l.status==="closed").length} closed</div></div>
-        <button onClick={add} style={{padding:"6px 14px",borderRadius:8,background:"rgba(232,160,32,0.1)",border:"1px solid rgba(232,160,32,0.3)",color:"#E8A020",fontSize:10,fontFamily:"monospace",cursor:"pointer"}}>+ ADD LEAD</button>
+        <div><div style={{fontSize:20,fontWeight:700,color:"#f0e8d8",fontFamily:"'Playfair Display',Georgia,serif"}}>Sales Pipeline</div>
+        <div style={{fontSize:14,color:"#556",fontFamily:"monospace"}}>{leads.length} leads • {leads.filter(l=>l.status==="closed").length} closed</div></div>
+        <button onClick={add} style={{padding:"6px 14px",borderRadius:8,background:"rgba(232,160,32,0.1)",border:"1px solid rgba(232,160,32,0.3)",color:"#E8A020",fontSize:14,fontFamily:"monospace",cursor:"pointer"}}>+ ADD LEAD</button>
       </div>
       <div style={{flex:1,overflowY:"auto",padding:"12px 18px"}}>
         <div style={{display:"flex",gap:6,marginBottom:16,flexWrap:"wrap"}}>
           {statuses.map(s=>{const count=leads.filter(l=>l.status===s.id).length;return(
-            <div key={s.id} style={{padding:"4px 10px",borderRadius:6,background:s.c+"15",border:"1px solid "+s.c+"30",fontSize:9,fontFamily:"monospace",color:s.c}}>{s.label} ({count})</div>
+            <div key={s.id} style={{padding:"4px 10px",borderRadius:6,background:s.c+"15",border:"1px solid "+s.c+"30",fontSize:13,fontFamily:"monospace",color:s.c}}>{s.label} ({count})</div>
           );})}
         </div>
         {leads.map(l=>{const st=statuses.find(s=>s.id===l.status)||statuses[0];const open=sel===l.id;return(
           <div key={l.id} onClick={()=>setSel(open?null:l.id)} style={{marginBottom:6,background:open?st.c+"08":"rgba(255,255,255,0.015)",border:"1px solid "+(open?st.c+"30":"rgba(255,255,255,0.06)"),borderRadius:10,padding:"12px 14px",cursor:"pointer",borderLeft:"3px solid "+st.c}}>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
-              <div><div style={{fontSize:13,fontWeight:600,color:"#e0d8c8",fontFamily:"'DM Sans',sans-serif"}}>{l.name}</div>
-              <div style={{fontSize:10,color:"#556",fontFamily:"monospace"}}>{l.agency||"No agency"} • {l.city||"?"}</div></div>
-              <div style={{padding:"3px 8px",borderRadius:5,background:st.c+"18",border:"1px solid "+st.c+"30",fontSize:8,color:st.c,fontFamily:"monospace"}}>{st.label}</div>
+              <div><div style={{fontSize:17,fontWeight:600,color:"#e0d8c8",fontFamily:"'DM Sans',sans-serif"}}>{l.name}</div>
+              <div style={{fontSize:14,color:"#556",fontFamily:"monospace"}}>{l.agency||"No agency"} • {l.city||"?"}</div></div>
+              <div style={{padding:"3px 8px",borderRadius:5,background:st.c+"18",border:"1px solid "+st.c+"30",fontSize:12,color:st.c,fontFamily:"monospace"}}>{st.label}</div>
             </div>
             {open&&(
               <div style={{marginTop:12,paddingTop:12,borderTop:"1px solid rgba(255,255,255,0.06)"}}>
                 <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,marginBottom:10}}>
                   {[["name","Name"],["agency","Agency"],["city","City"],["method","Method"]].map(([k,lbl])=>(
-                    <div key={k}><div style={{fontSize:8,color:"#556",fontFamily:"monospace",marginBottom:3}}>{lbl}</div>
-                    <input value={l[k]} onChange={e=>upd(l.id,k,e.target.value)} onClick={e=>e.stopPropagation()} style={{width:"100%",background:"rgba(255,255,255,0.04)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:6,padding:"6px 8px",color:"#c8c0b0",fontSize:11,fontFamily:"monospace",outline:"none",boxSizing:"border-box"}} /></div>
+                    <div key={k}><div style={{fontSize:12,color:"#556",fontFamily:"monospace",marginBottom:3}}>{lbl}</div>
+                    <input value={l[k]} onChange={e=>upd(l.id,k,e.target.value)} onClick={e=>e.stopPropagation()} style={{width:"100%",background:"rgba(255,255,255,0.04)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:6,padding:"6px 8px",color:"#c8c0b0",fontSize:15,fontFamily:"monospace",outline:"none",boxSizing:"border-box"}} /></div>
                   ))}
                 </div>
                 <div style={{marginBottom:10}}>
-                  <div style={{fontSize:8,color:"#556",fontFamily:"monospace",marginBottom:3}}>Status</div>
+                  <div style={{fontSize:12,color:"#556",fontFamily:"monospace",marginBottom:3}}>Status</div>
                   <div style={{display:"flex",gap:4,flexWrap:"wrap"}}>
                     {statuses.map(s=>(
-                      <button key={s.id} onClick={e=>{e.stopPropagation();upd(l.id,"status",s.id);}} style={{padding:"4px 8px",borderRadius:5,background:l.status===s.id?s.c+"25":"rgba(255,255,255,0.03)",border:"1px solid "+(l.status===s.id?s.c+"50":"rgba(255,255,255,0.08)"),color:l.status===s.id?s.c:"#556",fontSize:8,fontFamily:"monospace",cursor:"pointer"}}>{s.label}</button>
+                      <button key={s.id} onClick={e=>{e.stopPropagation();upd(l.id,"status",s.id);}} style={{padding:"4px 8px",borderRadius:5,background:l.status===s.id?s.c+"25":"rgba(255,255,255,0.03)",border:"1px solid "+(l.status===s.id?s.c+"50":"rgba(255,255,255,0.08)"),color:l.status===s.id?s.c:"#556",fontSize:12,fontFamily:"monospace",cursor:"pointer"}}>{s.label}</button>
                     ))}
                   </div>
                 </div>
                 <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8,marginBottom:10}}>
                   {[["contacted","First Contact"],["lastContact","Last Contact"],["followUp","Follow Up"]].map(([k,lbl])=>(
-                    <div key={k}><div style={{fontSize:8,color:"#556",fontFamily:"monospace",marginBottom:3}}>{lbl}</div>
-                    <input type="date" value={l[k]} onChange={e=>upd(l.id,k,e.target.value)} onClick={e=>e.stopPropagation()} style={{width:"100%",background:"rgba(255,255,255,0.04)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:6,padding:"5px 6px",color:"#c8c0b0",fontSize:10,fontFamily:"monospace",outline:"none",boxSizing:"border-box"}} /></div>
+                    <div key={k}><div style={{fontSize:12,color:"#556",fontFamily:"monospace",marginBottom:3}}>{lbl}</div>
+                    <input type="date" value={l[k]} onChange={e=>upd(l.id,k,e.target.value)} onClick={e=>e.stopPropagation()} style={{width:"100%",background:"rgba(255,255,255,0.04)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:6,padding:"5px 6px",color:"#c8c0b0",fontSize:14,fontFamily:"monospace",outline:"none",boxSizing:"border-box"}} /></div>
                   ))}
                 </div>
                 <div style={{marginBottom:10}}>
-                  <div style={{fontSize:8,color:"#556",fontFamily:"monospace",marginBottom:3}}>Notes</div>
-                  <textarea value={l.notes} onChange={e=>upd(l.id,"notes",e.target.value)} onClick={e=>e.stopPropagation()} rows={2} style={{width:"100%",background:"rgba(255,255,255,0.04)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:6,padding:"6px 8px",color:"#c8c0b0",fontSize:11,fontFamily:"monospace",outline:"none",resize:"vertical",boxSizing:"border-box"}} />
+                  <div style={{fontSize:12,color:"#556",fontFamily:"monospace",marginBottom:3}}>Notes</div>
+                  <textarea value={l.notes} onChange={e=>upd(l.id,"notes",e.target.value)} onClick={e=>e.stopPropagation()} rows={2} style={{width:"100%",background:"rgba(255,255,255,0.04)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:6,padding:"6px 8px",color:"#c8c0b0",fontSize:15,fontFamily:"monospace",outline:"none",resize:"vertical",boxSizing:"border-box"}} />
                 </div>
-                <button onClick={e=>{e.stopPropagation();del(l.id);}} style={{padding:"4px 10px",borderRadius:5,background:"rgba(192,57,43,0.08)",border:"1px solid rgba(192,57,43,0.2)",color:"#C0392B",fontSize:9,fontFamily:"monospace",cursor:"pointer"}}>DELETE</button>
+                <button onClick={e=>{e.stopPropagation();del(l.id);}} style={{padding:"4px 10px",borderRadius:5,background:"rgba(192,57,43,0.08)",border:"1px solid rgba(192,57,43,0.2)",color:"#C0392B",fontSize:13,fontFamily:"monospace",cursor:"pointer"}}>DELETE</button>
               </div>
             )}
           </div>
@@ -292,63 +292,87 @@ function CRMTab({leads,setLeads}) {
 function FinanceTab({data,setData}) {
   const [sec,setSec]=useState("overview");
   const upd=(s,id,f,v)=>setData(p=>({...p,[s]:p[s].map(i=>i.id===id?{...i,[f]:v}:i)}));
-  const add=(s)=>{const id=Date.now();setData(p=>({...p,[s]:[...p[s],s==="debt"?{id,label:"New",total:0,monthly:0,priority:p.debt.length+1}:{id,label:"New",amount:0}]}));};
+  const add=(s)=>{const id=Date.now();setData(p=>({...p,[s]:[...p[s],s==="debt"?{id,label:"New",total:0,monthly:0,priority:p.debt.length+1,due:"",url:"",rate:"0%"}:{id,label:"New",amount:0}]}));};
   const del=(s,id)=>setData(p=>({...p,[s]:p[s].filter(i=>i.id!==id)}));
   const net=data.income.reduce((a,i)=>a+i.amount,0);
   const exp=data.fixed.reduce((a,i)=>a+i.amount,0)+data.variable.reduce((a,i)=>a+i.amount,0);
   const sur=net-exp;const debt=data.debt.reduce((a,i)=>a+i.total,0);
+  const monthlyDebt=data.debt.reduce((a,d)=>a+d.monthly,0);
+
+  const ItemRow=({item,section,color})=>(
+    <div style={{display:"flex",alignItems:"center",gap:6,padding:"8px 12px",borderBottom:"1px solid rgba(255,255,255,0.04)"}}>
+      <input value={item.label} onChange={e=>upd(section,item.id,"label",e.target.value)} style={{flex:1,background:"transparent",border:"none",color:"#c8c0b0",fontSize:16,fontFamily:"'DM Sans',sans-serif",outline:"none",minWidth:0}} />
+      <div style={{display:"flex",alignItems:"center",gap:2}}>
+        <span style={{fontSize:15,color:"#556",fontFamily:"monospace"}}>$</span>
+        <input value={item.amount} onChange={e=>upd(section,item.id,"amount",toNum(e.target.value))} style={{width:75,background:"rgba(255,255,255,0.04)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:5,padding:"5px 8px",color:color,fontSize:16,fontFamily:"monospace",outline:"none",textAlign:"right"}} />
+      </div>
+      <button onClick={()=>del(section,item.id)} style={{background:"none",border:"none",color:"#C0392B",cursor:"pointer",fontSize:20,opacity:0.3,lineHeight:1}}>×</button>
+    </div>
+  );
+
   return (
     <div style={{display:"flex",flexDirection:"column",height:"100%",overflow:"hidden"}}>
-      <div style={{padding:"7px 14px",borderBottom:"1px solid rgba(232,160,32,0.1)",display:"flex",gap:4,background:"rgba(0,0,0,0.2)",flexShrink:0,flexWrap:"wrap"}}>
-        {[["overview","OVERVIEW"],["income","INCOME"],["fixed","FIXED"],["variable","VARIABLE"],["debt","DEBT"]].map(([id,lbl])=>(
-          <button key={id} onClick={()=>setSec(id)} style={{padding:"5px 10px",borderRadius:6,background:sec===id?"rgba(232,160,32,0.14)":"transparent",border:sec===id?"1px solid rgba(232,160,32,0.36)":"1px solid transparent",color:sec===id?"#E8A020":"#556",fontSize:9,fontFamily:"monospace",cursor:"pointer"}}>{lbl}</button>
+      <div style={{padding:"8px 14px",borderBottom:"1px solid rgba(232,160,32,0.1)",display:"flex",gap:4,background:"rgba(0,0,0,0.2)",flexShrink:0,flexWrap:"wrap"}}>
+        {[["overview","📊 Overview"],["income","💰 Income"],["fixed","🏠 Fixed"],["variable","💳 Variable"],["debt","📉 Debt"],["spending","🔍 Spending"]].map(([id,lbl])=>(
+          <button key={id} onClick={()=>setSec(id)} style={{padding:"6px 12px",borderRadius:7,background:sec===id?"rgba(232,160,32,0.14)":"transparent",border:sec===id?"1px solid rgba(232,160,32,0.36)":"1px solid transparent",color:sec===id?"#E8A020":"#556",fontSize:14,fontFamily:"'DM Sans',sans-serif",cursor:"pointer",fontWeight:sec===id?600:400}}>{lbl}</button>
         ))}
       </div>
-      <div style={{flex:1,overflowY:"auto",padding:"16px 18px"}}>
+      <div style={{flex:1,overflowY:"auto",padding:"18px 20px"}}>
         {sec==="overview"&&(<div>
-          <div style={{fontSize:16,fontWeight:700,color:"#f0e8d8",fontFamily:"'Playfair Display',Georgia,serif",marginBottom:14}}>Financial Dashboard</div>
-          <div style={{display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:8,marginBottom:16}}>
-            {[{l:"NET INCOME",v:net,c:"#1A8A4A"},{l:"EXPENSES",v:exp,c:"#C0392B"},{l:"SURPLUS",v:sur,c:sur>=0?"#E8A020":"#C0392B"},{l:"TOTAL DEBT",v:debt,c:"#8E44AD"}].map(x=>(
-              <div key={x.l} style={{background:x.c+"0c",border:"1px solid "+x.c+"30",borderRadius:12,padding:"14px 16px"}}>
-                <div style={{fontSize:8,color:x.c,letterSpacing:2,fontFamily:"monospace",marginBottom:6}}>{x.l}</div>
-                <div style={{fontSize:20,fontWeight:800,color:x.c,fontFamily:"monospace"}}>{f$(x.v)}</div>
+          <div style={{fontSize:22,fontWeight:700,color:"#f0e8d8",fontFamily:"'Playfair Display',Georgia,serif",marginBottom:6}}>Financial Dashboard</div>
+          <div style={{fontSize:14,color:"#556",fontFamily:"monospace",marginBottom:16}}>Brown Household • Mountain America CU</div>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:10,marginBottom:18}}>
+            {[{l:"MONTHLY INCOME",v:net,c:"#1A8A4A"},{l:"MONTHLY EXPENSES",v:exp,c:"#C0392B"},{l:"MONTHLY SURPLUS",v:sur,c:sur>=0?"#E8A020":"#C0392B"},{l:"TOTAL DEBT",v:debt,c:"#8E44AD"}].map(x=>(
+              <div key={x.l} style={{background:x.c+"0c",border:"1px solid "+x.c+"25",borderRadius:12,padding:"16px 18px"}}>
+                <div style={{fontSize:12,color:x.c,letterSpacing:2,fontFamily:"monospace",marginBottom:8}}>{x.l}</div>
+                <div style={{fontSize:26,fontWeight:800,color:x.c,fontFamily:"monospace"}}>{f$(x.v)}</div>
               </div>
             ))}
           </div>
-          <div style={{fontSize:12,fontWeight:700,color:"#e8d0a0",fontFamily:"'Playfair Display',Georgia,serif",marginBottom:10}}>CertFlow Revenue Impact</div>
-          <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:10}}>
-            {[{l:"NO CERTFLOW",c:"#C0392B",clients:0,rev:0},{l:"3 CLIENTS",c:"#E8A020",clients:3,rev:897},{l:"10 CLIENTS",c:"#1A8A4A",clients:10,rev:2990}].map(x=>{
-              const s2=sur+x.rev;const mo=s2>0?Math.max(1,Math.ceil(debt/s2)):999;return(
-              <div key={x.l} style={{background:x.c+"0c",border:"1px solid "+x.c+"30",borderRadius:12,padding:"16px"}}>
-                <div style={{fontSize:9,color:x.c,letterSpacing:2,fontFamily:"monospace",fontWeight:700,marginBottom:8}}>{x.l}</div>
-                <div style={{fontSize:22,fontWeight:900,color:x.c,fontFamily:"monospace"}}>{mo<999?Math.floor(mo/12)+"Y "+mo%12+"M":"∞"}</div>
-                <div style={{fontSize:9,color:"#556",fontFamily:"monospace",marginTop:3}}>to debt-free</div>
-                <div style={{fontSize:10,color:x.c,fontFamily:"monospace",marginTop:6}}>+{f$(x.rev)}/mo</div>
-                <div style={{fontSize:10,color:s2>=0?"#1A8A4A":"#C0392B",fontFamily:"monospace"}}>Surplus: {f$(s2)}</div>
+          <div style={{fontSize:17,fontWeight:700,color:"#E8A020",fontFamily:"'Playfair Display',Georgia,serif",marginBottom:10}}>CertFlow Revenue Impact</div>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:8}}>
+            {[{l:"TODAY",clients:0},{l:"2 CLIENTS",clients:2},{l:"5 CLIENTS",clients:5},{l:"10 CLIENTS",clients:10}].map(x=>{
+              const rev=x.clients*299;const s2=sur+rev;const c=s2>=0?"#1A8A4A":"#C0392B";return(
+              <div key={x.l} style={{background:c+"0a",border:"1px solid "+c+"25",borderRadius:10,padding:"14px 12px",textAlign:"center"}}>
+                <div style={{fontSize:12,color:x.clients===0?"#556":"#E8A020",letterSpacing:1,fontFamily:"monospace",fontWeight:700,marginBottom:6}}>{x.l}</div>
+                <div style={{fontSize:22,fontWeight:900,color:c,fontFamily:"monospace"}}>{f$(s2)}</div>
+                <div style={{fontSize:12,color:"#556",fontFamily:"monospace",marginTop:3}}>/month</div>
+                {x.clients>0&&<div style={{fontSize:12,color:"#E8A020",fontFamily:"monospace",marginTop:4}}>+{f$(rev)} revenue</div>}
               </div>);
             })}
           </div>
+          <div style={{marginTop:16,padding:"12px 16px",background:"rgba(232,160,32,0.06)",border:"1px solid rgba(232,160,32,0.15)",borderRadius:10}}>
+            <div style={{fontSize:15,color:"#E8A020",fontFamily:"'DM Sans',sans-serif",lineHeight:1.7}}>
+              {sur>=0?"You're in the green! Every CertFlow client adds pure surplus.":
+              `You need ${Math.ceil(Math.abs(sur)/299)} CertFlow clients at $299/mo to break even. That's ${Math.ceil(Math.abs(sur)/299)} agencies saying yes.`}
+            </div>
+          </div>
         </div>)}
+
         {["income","fixed","variable"].map(s=>sec!==s?null:(<div key={s}>
-          <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10}}>
-            <div style={{fontSize:15,fontWeight:700,color:"#f0e8d8",fontFamily:"'Playfair Display',Georgia,serif"}}>{s.charAt(0).toUpperCase()+s.slice(1)}</div>
-            <button onClick={()=>add(s)} style={{background:"rgba(232,160,32,0.1)",border:"1px solid rgba(232,160,32,0.3)",borderRadius:6,padding:"5px 12px",color:"#E8A020",fontSize:9,fontFamily:"monospace",cursor:"pointer"}}>+ ADD</button>
+          <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:12}}>
+            <div>
+              <div style={{fontSize:20,fontWeight:700,color:"#f0e8d8",fontFamily:"'Playfair Display',Georgia,serif"}}>{s==="income"?"Income":s==="fixed"?"Fixed Expenses":"Variable Expenses"}</div>
+              <div style={{fontSize:14,color:"#556",fontFamily:"monospace"}}>{s==="income"?"Monthly household income":"Monthly "+s+" costs"}</div>
+            </div>
+            <button onClick={()=>add(s)} style={{background:"rgba(232,160,32,0.1)",border:"1px solid rgba(232,160,32,0.3)",borderRadius:7,padding:"6px 14px",color:"#E8A020",fontSize:14,fontFamily:"'DM Sans',sans-serif",cursor:"pointer",fontWeight:600}}>+ Add</button>
           </div>
           <div style={{background:"rgba(255,255,255,0.02)",border:"1px solid rgba(255,255,255,0.08)",borderRadius:10,overflow:"hidden"}}>
-            {data[s].map(item=>(
-              <div key={item.id} style={{display:"grid",gridTemplateColumns:"1fr 100px 28px",gap:4,padding:"8px 12px",borderBottom:"1px solid rgba(255,255,255,0.04)",alignItems:"center"}}>
-                <input value={item.label} onChange={e=>upd(s,item.id,"label",e.target.value)} style={{background:"transparent",border:"none",color:"#8aaccf",fontSize:11,fontFamily:"monospace",outline:"none"}} />
-                <input value={item.amount} onChange={e=>upd(s,item.id,"amount",toNum(e.target.value))} style={{background:"rgba(232,160,32,0.06)",border:"1px solid rgba(232,160,32,0.15)",borderRadius:4,padding:"3px 6px",color:s==="income"?"#1A8A4A":"#C0392B",fontSize:11,fontFamily:"monospace",outline:"none",textAlign:"right"}} />
-                <button onClick={()=>del(s,item.id)} style={{background:"none",border:"none",color:"#C0392B",cursor:"pointer",fontSize:14,opacity:0.4}}>×</button>
-              </div>
-            ))}
+            {data[s].map(item=><ItemRow key={item.id} item={item} section={s} color={s==="income"?"#1A8A4A":"#C0392B"} />)}
           </div>
-          <div style={{textAlign:"right",marginTop:8,fontSize:11,color:"#667",fontFamily:"monospace"}}>Total: {f$(data[s].reduce((a,i)=>a+i.amount,0))}</div>
+          <div style={{display:"flex",justifyContent:"space-between",marginTop:10,padding:"0 4px"}}>
+            <div style={{fontSize:15,color:"#556",fontFamily:"monospace"}}>{data[s].length} items</div>
+            <div style={{fontSize:16,fontWeight:700,color:s==="income"?"#1A8A4A":"#C0392B",fontFamily:"monospace"}}>Total: {f$(data[s].reduce((a,i)=>a+i.amount,0))}</div>
+          </div>
         </div>))}
+
         {sec==="debt"&&(<div>
-          <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10}}>
-            <div style={{fontSize:15,fontWeight:700,color:"#f0e8d8",fontFamily:"'Playfair Display',Georgia,serif"}}>Debt Payoff (Avalanche)</div>
-            <button onClick={()=>{const id=Date.now();setData(p=>({...p,debt:[...p.debt,{id,label:"New",total:0,monthly:0,priority:p.debt.length+1,due:"",url:"",rate:"0%"}]}));}} style={{background:"rgba(142,68,173,0.1)",border:"1px solid rgba(142,68,173,0.3)",borderRadius:6,padding:"5px 12px",color:"#8E44AD",fontSize:9,fontFamily:"monospace",cursor:"pointer"}}>+ ADD</button>
+          <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:12}}>
+            <div>
+              <div style={{fontSize:20,fontWeight:700,color:"#f0e8d8",fontFamily:"'Playfair Display',Georgia,serif"}}>Debt Payoff</div>
+              <div style={{fontSize:14,color:"#556",fontFamily:"monospace"}}>Avalanche method — highest interest first</div>
+            </div>
+            <button onClick={()=>{const id=Date.now();setData(p=>({...p,debt:[...p.debt,{id,label:"New",total:0,monthly:0,priority:p.debt.length+1,due:"",url:"",rate:"0%"}]}));}} style={{background:"rgba(142,68,173,0.1)",border:"1px solid rgba(142,68,173,0.3)",borderRadius:7,padding:"6px 14px",color:"#8E44AD",fontSize:14,fontFamily:"'DM Sans',sans-serif",cursor:"pointer",fontWeight:600}}>+ Add</button>
           </div>
           <div style={{display:"flex",flexDirection:"column",gap:6}}>
             {[...data.debt].sort((a,b)=>a.priority-b.priority).map(d=>{
@@ -359,52 +383,106 @@ function FinanceTab({data,setData}) {
               <div key={d.id} style={{background:"rgba(255,255,255,0.02)",border:"1px solid rgba(142,68,173,0.12)",borderRadius:10,padding:"12px 14px",borderLeft:"3px solid "+rateColor}}>
                 <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:8}}>
                   <div style={{display:"flex",alignItems:"center",gap:8,flex:1}}>
-                    <div style={{fontSize:10,color:"#445",fontFamily:"monospace",width:16}}>{d.priority}</div>
-                    <input value={d.label} onChange={e=>upd("debt",d.id,"label",e.target.value)} style={{background:"transparent",border:"none",color:"#c8c0b0",fontSize:13,fontFamily:"'DM Sans',sans-serif",fontWeight:600,outline:"none",flex:1}} />
+                    <div style={{fontSize:14,color:"#445",fontFamily:"monospace",width:16}}>{d.priority}</div>
+                    <input value={d.label} onChange={e=>upd("debt",d.id,"label",e.target.value)} style={{background:"transparent",border:"none",color:"#c8c0b0",fontSize:17,fontFamily:"'DM Sans',sans-serif",fontWeight:600,outline:"none",flex:1}} />
                   </div>
                   <div style={{display:"flex",alignItems:"center",gap:6}}>
-                    <div style={{padding:"2px 6px",borderRadius:4,background:rateColor+"18",fontSize:9,color:rateColor,fontFamily:"monospace",fontWeight:700}}>{d.rate||"0%"}</div>
-                    {d.url&&<a href={d.url} target="_blank" rel="noreferrer" onClick={e=>e.stopPropagation()} style={{padding:"3px 8px",borderRadius:5,background:"rgba(26,138,74,0.12)",border:"1px solid rgba(26,138,74,0.3)",color:"#1A8A4A",fontSize:8,fontFamily:"monospace",textDecoration:"none",fontWeight:700,cursor:"pointer"}}>PAY NOW ↗</a>}
-                    <button onClick={()=>del("debt",d.id)} style={{background:"none",border:"none",color:"#C0392B",cursor:"pointer",fontSize:14,opacity:0.3}}>×</button>
+                    <div style={{padding:"2px 6px",borderRadius:4,background:rateColor+"18",fontSize:13,color:rateColor,fontFamily:"monospace",fontWeight:700}}>{d.rate||"0%"}</div>
+                    {d.url&&<a href={d.url} target="_blank" rel="noreferrer" onClick={e=>e.stopPropagation()} style={{padding:"4px 10px",borderRadius:6,background:"rgba(26,138,74,0.12)",border:"1px solid rgba(26,138,74,0.3)",color:"#1A8A4A",fontSize:13,fontFamily:"'DM Sans',sans-serif",textDecoration:"none",fontWeight:700,cursor:"pointer"}}>PAY NOW ↗</a>}
+                    <button onClick={()=>del("debt",d.id)} style={{background:"none",border:"none",color:"#C0392B",cursor:"pointer",fontSize:20,opacity:0.3}}>×</button>
                   </div>
                 </div>
-                <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr 1fr",gap:6,marginBottom:8}}>
+                <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr 1fr",gap:8,marginBottom:8}}>
                   <div>
-                    <div style={{fontSize:7,color:"#556",fontFamily:"monospace",marginBottom:2}}>BALANCE</div>
-                    <input value={d.total} onChange={e=>upd("debt",d.id,"total",toNum(e.target.value))} style={{width:"100%",background:"rgba(142,68,173,0.06)",border:"1px solid rgba(142,68,173,0.15)",borderRadius:4,padding:"4px 6px",color:"#a880d0",fontSize:11,fontFamily:"monospace",outline:"none",textAlign:"right",boxSizing:"border-box"}} />
+                    <div style={{fontSize:12,color:"#556",fontFamily:"monospace",marginBottom:3}}>BALANCE</div>
+                    <div style={{display:"flex",alignItems:"center",gap:2}}>
+                      <span style={{fontSize:14,color:"#556"}}>$</span>
+                      <input value={d.total} onChange={e=>upd("debt",d.id,"total",toNum(e.target.value))} style={{width:"100%",background:"rgba(142,68,173,0.06)",border:"1px solid rgba(142,68,173,0.15)",borderRadius:5,padding:"5px 6px",color:"#a880d0",fontSize:16,fontFamily:"monospace",outline:"none",textAlign:"right",boxSizing:"border-box"}} />
+                    </div>
                   </div>
                   <div>
-                    <div style={{fontSize:7,color:"#556",fontFamily:"monospace",marginBottom:2}}>MONTHLY</div>
-                    <input value={d.monthly} onChange={e=>upd("debt",d.id,"monthly",toNum(e.target.value))} style={{width:"100%",background:"rgba(142,68,173,0.06)",border:"1px solid rgba(142,68,173,0.15)",borderRadius:4,padding:"4px 6px",color:"#c8a0e0",fontSize:11,fontFamily:"monospace",outline:"none",textAlign:"right",boxSizing:"border-box"}} />
+                    <div style={{fontSize:12,color:"#556",fontFamily:"monospace",marginBottom:3}}>PAYMENT</div>
+                    <div style={{display:"flex",alignItems:"center",gap:2}}>
+                      <span style={{fontSize:14,color:"#556"}}>$</span>
+                      <input value={d.monthly} onChange={e=>upd("debt",d.id,"monthly",toNum(e.target.value))} style={{width:"100%",background:"rgba(142,68,173,0.06)",border:"1px solid rgba(142,68,173,0.15)",borderRadius:5,padding:"5px 6px",color:"#c8a0e0",fontSize:16,fontFamily:"monospace",outline:"none",textAlign:"right",boxSizing:"border-box"}} />
+                    </div>
                   </div>
                   <div>
-                    <div style={{fontSize:7,color:"#556",fontFamily:"monospace",marginBottom:2}}>DUE DAY</div>
-                    <input value={d.due||""} onChange={e=>upd("debt",d.id,"due",e.target.value)} placeholder="15" style={{width:"100%",background:"rgba(232,160,32,0.06)",border:"1px solid rgba(232,160,32,0.15)",borderRadius:4,padding:"4px 6px",color:"#E8A020",fontSize:11,fontFamily:"monospace",outline:"none",textAlign:"center",boxSizing:"border-box"}} />
+                    <div style={{fontSize:12,color:"#556",fontFamily:"monospace",marginBottom:3}}>DUE DAY</div>
+                    <input value={d.due||""} onChange={e=>upd("debt",d.id,"due",e.target.value)} placeholder="15th" style={{width:"100%",background:"rgba(232,160,32,0.06)",border:"1px solid rgba(232,160,32,0.15)",borderRadius:5,padding:"5px 6px",color:"#E8A020",fontSize:16,fontFamily:"monospace",outline:"none",textAlign:"center",boxSizing:"border-box"}} />
                   </div>
                   <div>
-                    <div style={{fontSize:7,color:"#556",fontFamily:"monospace",marginBottom:2}}>RATE</div>
-                    <input value={d.rate||""} onChange={e=>upd("debt",d.id,"rate",e.target.value)} placeholder="0%" style={{width:"100%",background:rateColor+"0a",border:"1px solid "+rateColor+"25",borderRadius:4,padding:"4px 6px",color:rateColor,fontSize:11,fontFamily:"monospace",outline:"none",textAlign:"center",boxSizing:"border-box"}} />
+                    <div style={{fontSize:12,color:"#556",fontFamily:"monospace",marginBottom:3}}>RATE</div>
+                    <input value={d.rate||""} onChange={e=>upd("debt",d.id,"rate",e.target.value)} placeholder="0%" style={{width:"100%",background:rateColor+"0a",border:"1px solid "+rateColor+"20",borderRadius:5,padding:"5px 6px",color:rateColor,fontSize:16,fontFamily:"monospace",outline:"none",textAlign:"center",boxSizing:"border-box"}} />
                   </div>
                 </div>
-                <div>
-                  <div style={{fontSize:7,color:"#556",fontFamily:"monospace",marginBottom:2}}>PAY URL</div>
-                  <input value={d.url||""} onChange={e=>upd("debt",d.id,"url",e.target.value)} placeholder="https://..." style={{width:"100%",background:"rgba(26,138,74,0.04)",border:"1px solid rgba(26,138,74,0.12)",borderRadius:4,padding:"4px 6px",color:"#1A8A4A",fontSize:9,fontFamily:"monospace",outline:"none",boxSizing:"border-box"}} />
+                <div style={{marginBottom:6}}>
+                  <div style={{fontSize:12,color:"#556",fontFamily:"monospace",marginBottom:3}}>PAYMENT LINK</div>
+                  <input value={d.url||""} onChange={e=>upd("debt",d.id,"url",e.target.value)} placeholder="https://..." style={{width:"100%",background:"rgba(26,138,74,0.04)",border:"1px solid rgba(26,138,74,0.12)",borderRadius:5,padding:"5px 8px",color:"#1A8A4A",fontSize:14,fontFamily:"monospace",outline:"none",boxSizing:"border-box"}} />
                 </div>
-                {d.monthly>0&&<div style={{marginTop:8}}>
+                {d.monthly>0&&<div style={{marginTop:6}}>
                   <div style={{display:"flex",justifyContent:"space-between",marginBottom:3}}>
-                    <div style={{fontSize:8,color:"#556",fontFamily:"monospace"}}>{moLeft} months remaining</div>
-                    <div style={{fontSize:8,color:"#E8A020",fontFamily:"monospace"}}>{f$(d.total)}</div>
+                    <div style={{fontSize:13,color:"#556",fontFamily:"monospace"}}>{moLeft} months left</div>
+                    <div style={{fontSize:13,color:rateColor,fontFamily:"monospace",fontWeight:600}}>{f$(d.total)} remaining</div>
                   </div>
-                  <div style={{height:4,background:"rgba(255,255,255,0.06)",borderRadius:2,overflow:"hidden"}}>
-                    <div style={{height:"100%",width:Math.max(2,100-Math.min(moLeft*2,100))+"%",background:"linear-gradient(90deg,#1A8A4A,#E8A020)",borderRadius:2,transition:"width 0.3s"}} />
+                  <div style={{height:5,background:"rgba(255,255,255,0.06)",borderRadius:3,overflow:"hidden"}}>
+                    <div style={{height:"100%",width:Math.max(3,100-Math.min(moLeft*1.5,100))+"%",background:"linear-gradient(90deg,#1A8A4A,"+rateColor+")",borderRadius:3,transition:"width 0.3s"}} />
                   </div>
                 </div>}
               </div>
             );})}
           </div>
-          <div style={{display:"flex",justifyContent:"space-between",marginTop:12}}>
-            <div style={{fontSize:11,color:"#8E44AD",fontFamily:"monospace"}}>Total Debt: {f$(debt)}</div>
-            <div style={{fontSize:11,color:"#E8A020",fontFamily:"monospace"}}>Monthly Payments: {f$(data.debt.reduce((a,d)=>a+d.monthly,0))}</div>
+          <div style={{display:"flex",justifyContent:"space-between",marginTop:14,padding:"12px 16px",background:"rgba(142,68,173,0.06)",border:"1px solid rgba(142,68,173,0.15)",borderRadius:10}}>
+            <div><div style={{fontSize:12,color:"#8E44AD",fontFamily:"monospace",letterSpacing:1}}>TOTAL DEBT</div><div style={{fontSize:20,fontWeight:800,color:"#8E44AD",fontFamily:"monospace"}}>{f$(debt)}</div></div>
+            <div><div style={{fontSize:12,color:"#C0392B",fontFamily:"monospace",letterSpacing:1}}>MONTHLY PAYMENTS</div><div style={{fontSize:20,fontWeight:800,color:"#C0392B",fontFamily:"monospace"}}>{f$(monthlyDebt)}</div></div>
+            <div><div style={{fontSize:12,color:"#E8A020",fontFamily:"monospace",letterSpacing:1}}>DEBT-FREE IN</div><div style={{fontSize:20,fontWeight:800,color:"#E8A020",fontFamily:"monospace"}}>{monthlyDebt>0?Math.ceil(debt/monthlyDebt)+"mo":"∞"}</div></div>
+          </div>
+        </div>)}
+
+        {sec==="spending"&&(<div>
+          <div style={{fontSize:20,fontWeight:700,color:"#f0e8d8",fontFamily:"'Playfair Display',Georgia,serif",marginBottom:6}}>Spending Analysis</div>
+          <div style={{fontSize:14,color:"#556",fontFamily:"monospace",marginBottom:16}}>Based on 7 months MACU bank data (Sep 2025 - Mar 2026)</div>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:10,marginBottom:18}}>
+            {[{l:"AVG INCOME",v:12767,c:"#1A8A4A"},{l:"AVG EXPENSES",v:13088,c:"#C0392B"},{l:"AVG NET",v:-321,c:"#C0392B"}].map(x=>(
+              <div key={x.l} style={{background:x.c+"0c",border:"1px solid "+x.c+"25",borderRadius:10,padding:"14px 16px",textAlign:"center"}}>
+                <div style={{fontSize:12,color:x.c,letterSpacing:1,fontFamily:"monospace",marginBottom:6}}>{x.l}</div>
+                <div style={{fontSize:22,fontWeight:800,color:x.c,fontFamily:"monospace"}}>{f$(x.v)}</div>
+                <div style={{fontSize:12,color:"#445",fontFamily:"monospace",marginTop:2}}>/month avg</div>
+              </div>
+            ))}
+          </div>
+          <div style={{fontSize:17,fontWeight:700,color:"#E8A020",fontFamily:"'Playfair Display',Georgia,serif",marginBottom:10}}>Where the Money Goes</div>
+          {[
+            {cat:"Rent (Orchard Cove)",amt:1890,c:"#8E44AD"},
+            {cat:"Vehicle Payments (Golden West)",amt:1256,c:"#2E86C1"},
+            {cat:"Groceries (WinCo/Walmart/Harmons)",amt:690,c:"#00C9A7"},
+            {cat:"Online Services & Subscriptions",amt:352,c:"#E8A020"},
+            {cat:"Amazon Shopping",amt:311,c:"#FF6B6B"},
+            {cat:"Restaurants & Dining",amt:278,c:"#C0392B"},
+            {cat:"Insurance (Progressive etc)",amt:222,c:"#2E86C1"},
+            {cat:"Healthcare & Pharmacy",amt:212,c:"#1A8A4A"},
+            {cat:"Phone (AT&T/Straight Talk)",amt:160,c:"#8E44AD"},
+            {cat:"Gas (Chevron etc)",amt:133,c:"#E8A020"},
+            {cat:"Entertainment",amt:169,c:"#FF6B6B"},
+            {cat:"Automotive Expenses",amt:116,c:"#00C9A7"},
+          ].map(x=>{const pct=((x.amt/13088)*100);return(
+            <div key={x.cat} style={{display:"flex",alignItems:"center",gap:10,padding:"8px 0",borderBottom:"1px solid rgba(255,255,255,0.04)"}}>
+              <div style={{flex:1,fontSize:16,color:"#c8c0b0",fontFamily:"'DM Sans',sans-serif"}}>{x.cat}</div>
+              <div style={{width:120,height:6,background:"rgba(255,255,255,0.06)",borderRadius:3,overflow:"hidden"}}>
+                <div style={{height:"100%",width:Math.min(pct*2,100)+"%",background:x.c,borderRadius:3}} />
+              </div>
+              <div style={{fontSize:16,fontWeight:700,color:x.c,fontFamily:"monospace",width:70,textAlign:"right"}}>{f$(x.amt)}</div>
+              <div style={{fontSize:13,color:"#556",fontFamily:"monospace",width:35,textAlign:"right"}}>{pct.toFixed(1)}%</div>
+            </div>
+          );})}
+          <div style={{marginTop:18,padding:"14px 16px",background:"rgba(232,160,32,0.06)",border:"1px solid rgba(232,160,32,0.15)",borderRadius:10}}>
+            <div style={{fontSize:16,fontWeight:700,color:"#E8A020",fontFamily:"'DM Sans',sans-serif",marginBottom:6}}>Quick Win Targets</div>
+            <div style={{fontSize:15,color:"#c8c0b0",fontFamily:"'DM Sans',sans-serif",lineHeight:1.8}}>
+              Cut Amazon by 50% → save $155/mo<br/>
+              Cut dining by 50% → save $139/mo<br/>
+              Review subscriptions → save $100-150/mo<br/>
+              <span style={{color:"#1A8A4A",fontWeight:600}}>Total potential savings: $394-444/mo — that's 1.5 CertFlow clients worth</span>
+            </div>
           </div>
         </div>)}
       </div>
@@ -432,9 +510,9 @@ function RoadmapTab({milestones,setMilestones}) {
   return (
     <div style={{height:"100%",overflowY:"auto",padding:"20px 24px"}}>
       <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:20}}>
-        <div><div style={{fontSize:18,fontWeight:700,color:"#f0e8d8",fontFamily:"'Playfair Display',Georgia,serif"}}>The Road to 2046</div>
-        <div style={{fontSize:10,color:"#556",fontFamily:"monospace"}}>Dylan Brown • Age 33 → 53</div></div>
-        <div style={{fontSize:12,color:"#E8A020",fontFamily:"monospace",fontWeight:700}}>{done}/{total}</div>
+        <div><div style={{fontSize:22,fontWeight:700,color:"#f0e8d8",fontFamily:"'Playfair Display',Georgia,serif"}}>The Road to 2046</div>
+        <div style={{fontSize:14,color:"#556",fontFamily:"monospace"}}>Dylan Brown • Age 33 → 53</div></div>
+        <div style={{fontSize:16,color:"#E8A020",fontFamily:"monospace",fontWeight:700}}>{done}/{total}</div>
       </div>
       <div style={{position:"relative",paddingLeft:24}}>
         <div style={{position:"absolute",left:8,top:0,bottom:0,width:2,background:"rgba(232,160,32,0.12)"}} />
@@ -445,15 +523,15 @@ function RoadmapTab({milestones,setMilestones}) {
             <div key={phase.id} style={{marginBottom:24}}>
               <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:10,marginLeft:-18}}>
                 <div style={{width:14,height:14,borderRadius:"50%",background:phase.c+"30",border:"2px solid "+phase.c,zIndex:1}} />
-                <div style={{fontSize:11,fontWeight:700,color:phase.c,fontFamily:"monospace",letterSpacing:2}}>{phase.label}</div>
+                <div style={{fontSize:15,fontWeight:700,color:phase.c,fontFamily:"monospace",letterSpacing:2}}>{phase.label}</div>
               </div>
               {items.map(m=>(
                 <div key={m.id} onClick={()=>toggle(m.id)} style={{display:"flex",alignItems:"center",gap:10,padding:"8px 12px",marginBottom:4,marginLeft:4,background:m.done?"rgba(26,138,74,0.06)":"rgba(255,255,255,0.015)",border:"1px solid "+(m.done?"rgba(26,138,74,0.2)":"rgba(255,255,255,0.06)"),borderRadius:8,cursor:"pointer"}}>
-                  <div style={{width:18,height:18,borderRadius:4,border:m.done?"2px solid #1A8A4A":"2px solid rgba(255,255,255,0.15)",background:m.done?"#1A8A4A20":"transparent",display:"flex",alignItems:"center",justifyContent:"center",fontSize:10,color:"#1A8A4A",flexShrink:0}}>{m.done?"✓":""}</div>
+                  <div style={{width:18,height:18,borderRadius:4,border:m.done?"2px solid #1A8A4A":"2px solid rgba(255,255,255,0.15)",background:m.done?"#1A8A4A20":"transparent",display:"flex",alignItems:"center",justifyContent:"center",fontSize:14,color:"#1A8A4A",flexShrink:0}}>{m.done?"✓":""}</div>
                   <div style={{flex:1}}>
-                    <div style={{fontSize:12,color:m.done?"#1A8A4A":"#c8c0b0",fontFamily:"'DM Sans',sans-serif",fontWeight:m.done?400:600,textDecoration:m.done?"line-through":"none"}}>{m.label}</div>
+                    <div style={{fontSize:16,color:m.done?"#1A8A4A":"#c8c0b0",fontFamily:"'DM Sans',sans-serif",fontWeight:m.done?400:600,textDecoration:m.done?"line-through":"none"}}>{m.label}</div>
                   </div>
-                  <div style={{fontSize:9,color:"#556",fontFamily:"monospace"}}>{m.date}</div>
+                  <div style={{fontSize:13,color:"#556",fontFamily:"monospace"}}>{m.date}</div>
                 </div>
               ))}
             </div>
@@ -471,24 +549,24 @@ function ContentTab({posts,setPosts}) {
   return (
     <div style={{height:"100%",overflowY:"auto",padding:"20px 24px"}}>
       <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:16}}>
-        <div><div style={{fontSize:16,fontWeight:700,color:"#f0e8d8",fontFamily:"'Playfair Display',Georgia,serif"}}>Content Engine</div>
-        <div style={{fontSize:10,color:"#556",fontFamily:"monospace"}}>2 posts/week • Tuesday & Thursday</div></div>
+        <div><div style={{fontSize:20,fontWeight:700,color:"#f0e8d8",fontFamily:"'Playfair Display',Georgia,serif"}}>Content Engine</div>
+        <div style={{fontSize:14,color:"#556",fontFamily:"monospace"}}>2 posts/week • Tuesday & Thursday</div></div>
         <div style={{display:"flex",gap:6}}>
           {[["ready","READY"],["queued","QUEUED"],["published","PUBLISHED"]].map(([s,l])=>(
-            <div key={s} style={{padding:"3px 8px",borderRadius:5,background:(statusC[s]||"#556")+"15",border:"1px solid "+(statusC[s]||"#556")+"30",fontSize:8,color:statusC[s],fontFamily:"monospace"}}>{l} ({posts.filter(p=>p.status===s).length})</div>
+            <div key={s} style={{padding:"3px 8px",borderRadius:5,background:(statusC[s]||"#556")+"15",border:"1px solid "+(statusC[s]||"#556")+"30",fontSize:12,color:statusC[s],fontFamily:"monospace"}}>{l} ({posts.filter(p=>p.status===s).length})</div>
           ))}
         </div>
       </div>
       {posts.map(p=>{const c=statusC[p.status]||"#556";return(
         <div key={p.id} onClick={()=>toggle(p.id)} style={{display:"flex",alignItems:"center",gap:12,padding:"10px 14px",marginBottom:4,background:c+"06",border:"1px solid "+c+"18",borderRadius:8,cursor:"pointer",borderLeft:"3px solid "+c}}>
-          <div style={{width:24,height:24,borderRadius:6,background:c+"20",display:"flex",alignItems:"center",justifyContent:"center",fontSize:10,color:c,fontFamily:"monospace",flexShrink:0}}>{p.id}</div>
+          <div style={{width:24,height:24,borderRadius:6,background:c+"20",display:"flex",alignItems:"center",justifyContent:"center",fontSize:14,color:c,fontFamily:"monospace",flexShrink:0}}>{p.id}</div>
           <div style={{flex:1}}>
-            <div style={{fontSize:12,color:"#c8c0b0",fontFamily:"'DM Sans',sans-serif",fontWeight:500}}>{p.title}</div>
-            <div style={{fontSize:9,color:"#556",fontFamily:"monospace",marginTop:2}}>{p.keywords}</div>
+            <div style={{fontSize:16,color:"#c8c0b0",fontFamily:"'DM Sans',sans-serif",fontWeight:500}}>{p.title}</div>
+            <div style={{fontSize:13,color:"#556",fontFamily:"monospace",marginTop:2}}>{p.keywords}</div>
           </div>
           <div style={{textAlign:"right"}}>
-            <div style={{padding:"2px 8px",borderRadius:4,background:c+"18",fontSize:8,color:c,fontFamily:"monospace",fontWeight:700}}>{p.status.toUpperCase()}</div>
-            <div style={{fontSize:8,color:"#445",fontFamily:"monospace",marginTop:3}}>{p.scheduled}</div>
+            <div style={{padding:"2px 8px",borderRadius:4,background:c+"18",fontSize:12,color:c,fontFamily:"monospace",fontWeight:700}}>{p.status.toUpperCase()}</div>
+            <div style={{fontSize:12,color:"#445",fontFamily:"monospace",marginTop:3}}>{p.scheduled}</div>
           </div>
         </div>
       );})}
@@ -511,8 +589,8 @@ function DashboardTab({leads,milestones,posts,fin}) {
   return (
     <div style={{height:"100%",overflowY:"auto",padding:"20px 24px"}}>
       <div style={{marginBottom:20}}>
-        <div style={{fontSize:20,fontWeight:700,color:"#f0e8d8",fontFamily:"'Playfair Display',Georgia,serif"}}>Good morning, Dylan.</div>
-        <div style={{fontSize:11,color:"#556",fontFamily:"monospace",marginTop:4}}>{new Date().toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric",year:"numeric"})}</div>
+        <div style={{fontSize:24,fontWeight:700,color:"#f0e8d8",fontFamily:"'Playfair Display',Georgia,serif"}}>Good morning, Dylan.</div>
+        <div style={{fontSize:15,color:"#556",fontFamily:"monospace",marginTop:4}}>{new Date().toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric",year:"numeric"})}</div>
       </div>
 
       <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:10,marginBottom:20}}>
@@ -523,15 +601,15 @@ function DashboardTab({leads,milestones,posts,fin}) {
           {l:"MRR",v:f$(closedDeals*299),c:"#FF6B6B"},
         ].map(x=>(
           <div key={x.l} style={{background:x.c+"0c",border:"1px solid "+x.c+"30",borderRadius:12,padding:"14px 16px"}}>
-            <div style={{fontSize:8,color:x.c,letterSpacing:2,fontFamily:"monospace",marginBottom:6}}>{x.l}</div>
-            <div style={{fontSize:24,fontWeight:900,color:x.c,fontFamily:"monospace"}}>{typeof x.v==="string"?x.v:x.v}</div>
+            <div style={{fontSize:12,color:x.c,letterSpacing:2,fontFamily:"monospace",marginBottom:6}}>{x.l}</div>
+            <div style={{fontSize:28,fontWeight:900,color:x.c,fontFamily:"monospace"}}>{typeof x.v==="string"?x.v:x.v}</div>
           </div>
         ))}
       </div>
 
       <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:14}}>
         <div style={{background:"rgba(255,255,255,0.02)",border:"1px solid rgba(232,160,32,0.12)",borderRadius:12,padding:"16px 18px"}}>
-          <div style={{fontSize:12,fontWeight:700,color:"#E8A020",fontFamily:"monospace",marginBottom:12}}>NEXT ACTIONS</div>
+          <div style={{fontSize:16,fontWeight:700,color:"#E8A020",fontFamily:"monospace",marginBottom:12}}>NEXT ACTIONS</div>
           {[
             {t:"Text Blayne — lock in Zoom demo",done:false},
             {t:"Follow up Caleb (Tuesday if no response)",done:false},
@@ -541,26 +619,26 @@ function DashboardTab({leads,milestones,posts,fin}) {
           ].map((a,i)=>(
             <div key={i} style={{display:"flex",alignItems:"center",gap:8,padding:"6px 0",borderBottom:"1px solid rgba(255,255,255,0.04)"}}>
               <div style={{width:14,height:14,borderRadius:3,border:"1.5px solid rgba(255,255,255,0.2)",flexShrink:0}} />
-              <div style={{fontSize:11,color:"#c8c0b0",fontFamily:"'DM Sans',sans-serif"}}>{a.t}</div>
+              <div style={{fontSize:15,color:"#c8c0b0",fontFamily:"'DM Sans',sans-serif"}}>{a.t}</div>
             </div>
           ))}
         </div>
 
         <div>
           <div style={{background:"rgba(255,255,255,0.02)",border:"1px solid rgba(26,138,74,0.15)",borderRadius:12,padding:"14px 16px",marginBottom:10}}>
-            <div style={{fontSize:10,fontWeight:700,color:"#1A8A4A",fontFamily:"monospace",marginBottom:8}}>NEXT MILESTONE</div>
-            <div style={{fontSize:13,color:"#c8c0b0",fontFamily:"'DM Sans',sans-serif"}}>{nextMilestone?.label||"All done!"}</div>
-            <div style={{fontSize:9,color:"#556",fontFamily:"monospace",marginTop:3}}>{nextMilestone?.date||""}</div>
+            <div style={{fontSize:14,fontWeight:700,color:"#1A8A4A",fontFamily:"monospace",marginBottom:8}}>NEXT MILESTONE</div>
+            <div style={{fontSize:17,color:"#c8c0b0",fontFamily:"'DM Sans',sans-serif"}}>{nextMilestone?.label||"All done!"}</div>
+            <div style={{fontSize:13,color:"#556",fontFamily:"monospace",marginTop:3}}>{nextMilestone?.date||""}</div>
           </div>
           <div style={{background:"rgba(255,255,255,0.02)",border:"1px solid rgba(46,134,193,0.15)",borderRadius:12,padding:"14px 16px",marginBottom:10}}>
-            <div style={{fontSize:10,fontWeight:700,color:"#2E86C1",fontFamily:"monospace",marginBottom:8}}>CONTENT</div>
-            <div style={{fontSize:12,color:"#c8c0b0",fontFamily:"'DM Sans',sans-serif"}}>{readyPosts} posts ready to publish</div>
-            <div style={{fontSize:9,color:"#556",fontFamily:"monospace",marginTop:3}}>Next: {nextPost?.title?.substring(0,40)||"None"}...</div>
+            <div style={{fontSize:14,fontWeight:700,color:"#2E86C1",fontFamily:"monospace",marginBottom:8}}>CONTENT</div>
+            <div style={{fontSize:16,color:"#c8c0b0",fontFamily:"'DM Sans',sans-serif"}}>{readyPosts} posts ready to publish</div>
+            <div style={{fontSize:13,color:"#556",fontFamily:"monospace",marginTop:3}}>Next: {nextPost?.title?.substring(0,40)||"None"}...</div>
           </div>
           <div style={{background:"rgba(255,255,255,0.02)",border:"1px solid rgba(232,160,32,0.15)",borderRadius:12,padding:"14px 16px"}}>
-            <div style={{fontSize:10,fontWeight:700,color:"#E8A020",fontFamily:"monospace",marginBottom:8}}>MONTHLY SURPLUS</div>
-            <div style={{fontSize:20,fontWeight:800,color:sur>=0?"#E8A020":"#C0392B",fontFamily:"monospace"}}>{f$(sur)}</div>
-            <div style={{fontSize:9,color:"#556",fontFamily:"monospace",marginTop:3}}>+$299 per CertFlow client</div>
+            <div style={{fontSize:14,fontWeight:700,color:"#E8A020",fontFamily:"monospace",marginBottom:8}}>MONTHLY SURPLUS</div>
+            <div style={{fontSize:24,fontWeight:800,color:sur>=0?"#E8A020":"#C0392B",fontFamily:"monospace"}}>{f$(sur)}</div>
+            <div style={{fontSize:13,color:"#556",fontFamily:"monospace",marginTop:3}}>+$299 per CertFlow client</div>
           </div>
         </div>
       </div>
@@ -596,17 +674,17 @@ export default function App() {
 
       <div style={{display:"flex",alignItems:"center",borderBottom:"1px solid rgba(232,160,32,0.1)",background:"rgba(0,0,0,0.5)",flexShrink:0}}>
         <div style={{padding:"0 16px",borderRight:"1px solid rgba(232,160,32,0.08)",flexShrink:0,display:"flex",alignItems:"center",height:48}}>
-          <div style={{width:28,height:28,borderRadius:7,background:"linear-gradient(135deg,#B8860B,#E8A020)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:10,fontWeight:900,color:"#060A12",fontFamily:"monospace",marginRight:8}}>CF</div>
-          <span style={{fontSize:14,fontWeight:800,color:"#E8A020",fontFamily:"'Playfair Display',Georgia,serif",letterSpacing:3}}>CERTFLOW</span>
+          <div style={{width:28,height:28,borderRadius:7,background:"linear-gradient(135deg,#B8860B,#E8A020)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:14,fontWeight:900,color:"#060A12",fontFamily:"monospace",marginRight:8}}>CF</div>
+          <span style={{fontSize:18,fontWeight:800,color:"#E8A020",fontFamily:"'Playfair Display',Georgia,serif",letterSpacing:3}}>CERTFLOW</span>
         </div>
         {TABS.map(t=>(
-          <button key={t.id} onClick={()=>setTab(t.id)} style={{padding:"0 14px",height:48,background:tab===t.id?t.c+"10":"transparent",border:"none",borderBottom:tab===t.id?"2px solid "+t.c:"2px solid transparent",color:tab===t.id?t.c:"#445",fontSize:9,fontFamily:"monospace",cursor:"pointer",letterSpacing:1,display:"flex",alignItems:"center",gap:5,flexShrink:0}}>
-            <span style={{fontSize:12}}>{t.icon}</span>{t.lbl}
+          <button key={t.id} onClick={()=>setTab(t.id)} style={{padding:"0 14px",height:48,background:tab===t.id?t.c+"10":"transparent",border:"none",borderBottom:tab===t.id?"2px solid "+t.c:"2px solid transparent",color:tab===t.id?t.c:"#445",fontSize:13,fontFamily:"monospace",cursor:"pointer",letterSpacing:1,display:"flex",alignItems:"center",gap:5,flexShrink:0}}>
+            <span style={{fontSize:16}}>{t.icon}</span>{t.lbl}
           </button>
         ))}
         <div style={{marginLeft:"auto",padding:"0 14px",display:"flex",alignItems:"center",gap:8,flexShrink:0}}>
-          <a href="https://certflo.io" target="_blank" rel="noreferrer" style={{fontSize:8,color:"#00C9A7",fontFamily:"monospace",textDecoration:"none"}}>certflo.io ↗</a>
-          <a href="https://calendly.com/dylan-certflo/30min" target="_blank" rel="noreferrer" style={{fontSize:8,color:"#E8A020",fontFamily:"monospace",textDecoration:"none"}}>Calendly ↗</a>
+          <a href="https://certflo.io" target="_blank" rel="noreferrer" style={{fontSize:12,color:"#00C9A7",fontFamily:"monospace",textDecoration:"none"}}>certflo.io ↗</a>
+          <a href="https://calendly.com/dylan-certflo/30min" target="_blank" rel="noreferrer" style={{fontSize:12,color:"#E8A020",fontFamily:"monospace",textDecoration:"none"}}>Calendly ↗</a>
         </div>
       </div>
 
