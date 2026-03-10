@@ -314,7 +314,7 @@ function HomePage() {
   return (
     <div style={{ minHeight: "100vh", background: "#060A12", color: "#c8c0b0", fontFamily: "'DM Sans', sans-serif" }}>
       <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-      <style>{`* { box-sizing: border-box; margin: 0; padding: 0; } html { scroll-behavior: smooth; } ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-thumb { background: rgba(232,160,32,0.2); border-radius: 3px; } ::placeholder { color: #556; } @media (max-width: 768px) { nav > div > div:last-child > button:not(:last-child) { display: none !important; } }`}</style>
+      <style>{`* { box-sizing: border-box; margin: 0; padding: 0; } html { scroll-behavior: smooth; } ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-thumb { background: rgba(232,160,32,0.2); border-radius: 3px; } ::placeholder { color: #556; } @media (max-width: 768px) { nav > div > div:last-child > button:not(:last-child):not(:nth-last-child(2)) { display: none !important; } }`}</style>
       <Nav active={active} />
       <Hero />
       <HowItWorks />
