@@ -73,23 +73,19 @@ function Nav({ active }) {
             >{label}</button>
           ))}
           {/* Blog link */}
-          <button onClick={() => navigate("/blog")} style={{
-            background: "none", border: "none",
-            color: location.pathname.startsWith("/blog") ? "#E8A020" : "#8a8a9a",
-            fontSize: 13, fontFamily: "'DM Sans', sans-serif", cursor: "pointer",
-            fontWeight: location.pathname.startsWith("/blog") ? 700 : 400, transition: "color 0.2s",
-          }}
-          onMouseOver={e => e.currentTarget.style.color = "#E8A020"}
-          onMouseOut={e => { if (!location.pathname.startsWith("/blog")) e.currentTarget.style.color = "#8a8a9a"; }}
-          >Blog</button><button onClick={() => navigate("/about")} style={{
-  background: "none", border: "none",
-  color: location.pathname === "/about" ? "#E8A020" : "#8a8a9a",
-  fontSize: 13, fontFamily: "'DM Sans', sans-serif", cursor: "pointer",
-  fontWeight: location.pathname === "/about" ? 700 : 400, transition: "color 0.2s",
-}}
-onMouseOver={e => e.currentTarget.style.color = "#E8A020"}
-onMouseOut={e => { if (location.pathname !== "/about") e.currentTarget.style.color = "#8a8a9a"; }}
->About</button>
+          <button onClick={() => navigate("/about")} style={{
+  padding: "8px 20px", borderRadius: 8,
+  background: "linear-gradient(135deg, #B8860B, #E8A020)",
+  border: "none", color: "#060A12", fontSize: 12, fontWeight: 700,
+  fontFamily: "'DM Sans', sans-serif", cursor: "pointer", letterSpacing: 1,
+}}>ABOUT</button>
+```
+
+Ctrl+S, close, then:
+```
+git add .
+git commit -m "fix: style About button to match Get a Demo"
+git push
           <button onClick={() => window.open("https://calendly.com/dylan-certflo/30min", "_blank")} style={{
             padding: "8px 20px", borderRadius: 8,
             background: "linear-gradient(135deg, #B8860B, #E8A020)",
