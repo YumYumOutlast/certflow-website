@@ -4,8 +4,12 @@ import { useState, useEffect, useRef } from "react";
 // CERTFLOW COMMAND CENTER v3 — THE ENGINE ROOM
 // ═══════════════════════════════════════════════════════════════
 
-const PW = "Sarupial135!135";
-const CERTFLOW_CTX = `CertFlow Administrative Services — AI-powered COI automation for trucking insurance agencies. Founder: Dylan Brown, truck driver building from zero capital. Domain: certflo.io. Email: dylan@certflo.io. Pipeline: Node.js on Railway (Gmail watcher → Claude parser v2 → ACORD 25 PDF generator → auto-reply → Sheets logger). Batch cert support working (3 certs from 1 email). Parser trained on 15 edge cases + 10 carrier quirks. Pricing: founding rate $299/mo (first 5 clients, locked forever), standard $399/mo, future $499-599. Target: small agencies (3-30 staff) still doing manual COI work. Market: ~2K-3.5K trucking agencies Phase 1, 10K+ commercial Phase 2. Stage 3: prototype done, chasing first client. Warm leads: Blayne Jacobson (Utah agency, Zoom demo scheduling), Caleb Shepard (W Insurance Group, hotshot trucking), Tristan's church intro, Paul (Chantel's boss, P&C agency). Strategy: one niche, one pain point, like Weave started with dentists. Needs: LLC, EIN, E&O insurance, MSA. Calendly: calendly.com/dylan-certflo/30min.`;
+const PW = "certflow2024";
+const CERTFLOW_CTX = `CertFlow Administrative Services — AI-powered COI automation for trucking insurance agencies. Founder: Dylan Brown, truck driver building from zero capital. Domain: certflo.io. Email: dylan@certflo.io. Pipeline: Node.js on Railway (Gmail watcher → Claude parser v2 → ACORD 25 PDF generator → auto-reply → Sheets logger). Batch cert support working (3 certs from 1 email). Parser trained on 15 edge cases + 10 carrier quirks. Pricing: founding rate $299/mo (first 5 clients, locked forever), standard $399/mo, future $499-599. Target: small agencies (3-30 staff) still doing manual COI work. Market: ~2K-3.5K trucking agencies Phase 1, 10K+ commercial Phase 2. Stage 3: prototype done, chasing first client.
+
+CRITICAL ARCHITECTURE PIVOT (from Blayne Jacobson feedback 3/10/26): Real agency workflow does NOT include policy info in cert requests. CSRs only send cert holder name + address. All policy data (carrier, limits, endorsements, policy number) is already on file in a "master cert" template. CertFlow must be rebuilt around this: (1) Agency onboards by providing master cert profiles for each insured client — policy data entered ONCE. (2) CSR emails just the cert holder name and address. (3) CertFlow matches the insured, pulls master profile, merges cert holder, generates cert. This is SIMPLER and MORE VALUABLE than the current email-parsing model. Current parser still works for demo purposes but production architecture needs master cert profiles.
+
+Warm leads: Blayne Jacobson (Utah agency — not a client, but an industry advisor/sounding board), Caleb Shepard (W Insurance Group, hotshot trucking), Tristan's church intro, Paul (Chantel's boss, P&C agency). Strategy: one niche, one pain point, like Weave started with dentists. Needs: LLC, EIN, E&O insurance, MSA. Calendly: calendly.com/dylan-certflo/30min.`;
 
 const f$ = (n) => "$" + Number(n||0).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
 const toNum = (v) => parseFloat(String(v).replace(/[^0-9.-]/g,"")) || 0;
@@ -127,7 +131,7 @@ function Lock({onUnlock}) {
           <input type="password" value={pw} onChange={e=>setPw(e.target.value)} onKeyDown={e=>e.key==="Enter"&&go()} placeholder="Password" autoFocus
             style={{width:"100%",background:"rgba(232,160,32,0.05)",border:"1px solid rgba(232,160,32,0.2)",borderRadius:8,padding:"12px 14px",color:"#e0d0a0",fontSize:18,fontFamily:"monospace",outline:"none",marginBottom:10,letterSpacing:4,boxSizing:"border-box"}} />
           <button onClick={go} style={{width:"100%",padding:"11px",background:"linear-gradient(135deg,#B8860B,#E8A020)",borderRadius:8,border:"none",color:"#060A12",fontSize:16,fontWeight:700,fontFamily:"monospace",letterSpacing:3,cursor:"pointer"}}>UNLOCK</button>
-          {att>=3&&<div style={{textAlign:"center",marginTop:8,fontSize:14,color:"#C0392B",fontFamily:"monospace"}}>Sarupial135!135</div>}
+          {att>=3&&<div style={{textAlign:"center",marginTop:8,fontSize:14,color:"#C0392B",fontFamily:"monospace"}}>certflow2024</div>}
         </div>
       </div>
     </div>
