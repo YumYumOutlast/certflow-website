@@ -170,13 +170,26 @@ export default function About() {
         </FadeIn>
 
         <FadeIn delay={0.2}>
-          <p style={{
-            fontSize: "clamp(17px, 2.5vw, 20px)",
-            color: textBody, lineHeight: 1.75,
-            margin: "0 auto", maxWidth: 640,
-          }}>
-            I'm Dylan Brown. I drive trucks for a living. I also built an AI company that automates one of the most tedious, error-prone processes in trucking insurance — because I watched it break too many times to keep ignoring it.
-          </p>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 32, marginTop: 16 }}>
+  <img
+    src="/dylan.jpg"
+    alt="Dylan Brown, founder of CertFlow"
+    style={{
+      width: 160, height: 160, borderRadius: "50%",
+      objectFit: "cover", objectPosition: "center top",
+      border: `2px solid ${goldBorder}`,
+      filter: "grayscale(100%)",
+    }}
+  />
+  <p style={{
+    fontSize: "clamp(17px, 2.5vw, 20px)",
+    color: textBody, lineHeight: 1.75,
+    margin: "0 auto", maxWidth: 640,
+  }}>
+    I'm Dylan Brown. I drive trucks for a living. I also built an AI company that automates one of the most tedious, error-prone processes in trucking insurance — because I watched it break too many times to keep ignoring it.
+  </p>
+</div>
+
         </FadeIn>
       </div>
 
