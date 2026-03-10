@@ -81,7 +81,16 @@ function Nav({ active }) {
           }}
           onMouseOver={e => e.currentTarget.style.color = "#E8A020"}
           onMouseOut={e => { if (!location.pathname.startsWith("/blog")) e.currentTarget.style.color = "#8a8a9a"; }}
-          >Blog</button>
+          >Blog</button><button onClick={() => navigate("/about")} style={{
+  background: "none", border: "none",
+  color: location.pathname === "/about" ? "#E8A020" : "#8a8a9a",
+  fontSize: 13, fontFamily: "'DM Sans', sans-serif", cursor: "pointer",
+  fontWeight: location.pathname === "/about" ? 700 : 400, transition: "color 0.2s",
+}}
+onMouseOver={e => e.currentTarget.style.color = "#E8A020"}
+onMouseOut={e => { if (location.pathname !== "/about") e.currentTarget.style.color = "#8a8a9a"; }}
+>About</button>
+```
           <button onClick={() => window.open("https://calendly.com/dylan-certflo/30min", "_blank")} style={{
             padding: "8px 20px", borderRadius: 8,
             background: "linear-gradient(135deg, #B8860B, #E8A020)",
