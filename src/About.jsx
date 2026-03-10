@@ -53,12 +53,12 @@ const milestones = [
   {
     year: "The Build",
     title: "Zero Capital. Zero Connections. Just the Work.",
-    body: "I built CertFlow from a truck cab and a laptop. Node.js pipeline. Claude API for extraction. ACORD 25 generation. Gmail integration. Google Sheets logging. I trained it on 15 carrier-specific edge cases and 10 quirks I'd seen in the wild. I deployed it on Railway. I pointed a domain at Vercel. I did all of it before I had a single paying client — because I needed to know it worked before I asked anyone to trust it.",
+    body: "I built CertFlo from a truck cab and a laptop. Node.js pipeline. Claude API for extraction. ACORD 25 generation. Gmail integration. Google Sheets logging. I trained it on 15 carrier-specific edge cases and 10 quirks I'd seen in the wild. I deployed it on Railway. I pointed a domain at Vercel. I did all of it before I had a single paying client — because I needed to know it worked before I asked anyone to trust it.",
   },
   {
     year: "The Mission",
     title: "Machine One of Many",
-    body: "CertFlow isn't just a product. It's proof of a pattern. Identify a process that's broken, that real people are suffering through, that has a clear repeatable solution — then build the machine that fixes it and runs itself. CertFlow is Machine One. The goal is a fleet of them. Each one solving a real problem. Each one running autonomously. Each one funding what comes next.",
+    body: "CertFlo isn't just a product. It's proof of a pattern. Identify a process that's broken, that real people are suffering through, that has a clear repeatable solution — then build the machine that fixes it and runs itself. CertFlo is Machine One. The goal is a fleet of them. Each one solving a real problem. Each one running autonomously. Each one funding what comes next.",
   },
 ];
 
@@ -66,12 +66,12 @@ const values = [
   {
     icon: "⚙️",
     title: "Built by Someone Who's Been There",
-    body: "I'm not a VC-backed founder who read about trucking insurance. I drive. I've lived the friction CertFlow solves.",
+    body: "I'm not a VC-backed founder who read about trucking insurance. I drive. I've lived the friction CertFlo solves.",
   },
   {
     icon: "🔒",
     title: "Admin Only. Never an Agent.",
-    body: "CertFlow processes certificates. We don't give insurance advice, we don't act as brokers, we don't touch underwriting. Clean boundaries. Real compliance.",
+    body: "CertFlo processes certificates. We don't give insurance advice, we don't act as brokers, we don't touch underwriting. Clean boundaries. Real compliance.",
   },
   {
     icon: "📈",
@@ -112,7 +112,7 @@ export default function About() {
               display: "flex", alignItems: "center", justifyContent: "center",
               fontSize: 14, fontWeight: 700, color: dark,
             }}>CF</div>
-            <span style={{ color: "#fff", fontWeight: 700, fontSize: 16, letterSpacing: "0.04em", fontFamily: "Georgia, serif" }}>CERTFLOW</span>
+            <span style={{ color: "#fff", fontWeight: 700, fontSize: 16, letterSpacing: "0.04em", fontFamily: "Georgia, serif" }}>CertFlo</span>
           </a>
           <div style={{ display: "flex", gap: 32, alignItems: "center" }}>
             <a href="/" style={{ color: textMuted, textDecoration: "none", fontSize: 14, letterSpacing: "0.06em" }}>HOME</a>
@@ -153,7 +153,7 @@ export default function About() {
             fontSize: 11, letterSpacing: "0.14em", color: gold,
             marginBottom: 32, textTransform: "uppercase",
           }}>
-            The Story Behind CertFlow
+            The Story Behind CertFlo
           </div>
         </FadeIn>
 
@@ -173,7 +173,7 @@ export default function About() {
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 32, marginTop: 16 }}>
   <img
     src="/dylan.jpg"
-    alt="Dylan Brown, founder of CertFlow"
+    alt="Dylan Brown, founder of CertFlo"
     style={{
       width: 160, height: 160, borderRadius: "50%",
       objectFit: "cover", objectPosition: "center top",
@@ -356,7 +356,7 @@ export default function About() {
         padding: "32px 24px", textAlign: "center",
       }}>
         <p style={{ color: textMuted, fontSize: 13, margin: 0, letterSpacing: "0.04em" }}>
-          © 2026 CertFlow Administrative Services · Not an insurance agent or broker
+          © 2026 CertFlo Administrative Services · Not an insurance agent or broker
         </p>
       </div>
     </div>

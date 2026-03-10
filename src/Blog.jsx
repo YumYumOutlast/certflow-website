@@ -14,7 +14,7 @@ export default function Blog() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Blog | CertFlow — COI Automation Insights for Trucking Agencies";
+    document.title = "Blog | CertFlo — COI Automation Insights for Trucking Agencies";
   }, []);
 
   return (
@@ -52,7 +52,7 @@ export default function Blog() {
             <span style={{
               fontSize: 18, fontWeight: 800, color: "#E8A020",
               fontFamily: "'Playfair Display', Georgia, serif", letterSpacing: 2,
-            }}>CERTFLOW</span>
+            }}>CertFlo</span>
           </div>
           <div style={{ display: "flex", gap: 24, alignItems: "center" }}>
             <button className="back-link" onClick={() => navigate("/")} style={{
@@ -79,7 +79,7 @@ export default function Blog() {
       }}>
         <div style={{ maxWidth: 800, margin: "0 auto" }}>
           <div style={{ fontSize: 11, fontFamily: "monospace", color: "#E8A020", letterSpacing: 4, marginBottom: 16 }}>
-            CERTFLOW INSIGHTS
+            CertFlo INSIGHTS
           </div>
           <h1 style={{
             fontSize: "clamp(32px, 5vw, 58px)", fontWeight: 800,
@@ -216,7 +216,7 @@ export default function Blog() {
           color: "#f0e8d8", margin: "0 0 12px 0",
         }}>Still processing COIs manually?</h2>
         <p style={{ fontSize: 15, color: "#8a8a9a", fontFamily: "'DM Sans', sans-serif", marginBottom: 28 }}>
-          See CertFlow handle a real request in under 5 minutes.
+          See CertFlo handle a real request in under 5 minutes.
         </p>
         <button onClick={() => window.open("https://calendly.com/dylan-certflo/30min", "_blank")} style={{
           padding: "14px 36px", borderRadius: 10,
@@ -231,7 +231,7 @@ export default function Blog() {
         background: "#040810", textAlign: "center",
         fontSize: 11, color: "#334", fontFamily: "monospace", letterSpacing: "0.06em",
       }}>
-        © {new Date().getFullYear()} CertFlow Administrative Services · Not an insurance agent or broker
+        © {new Date().getFullYear()} CertFlo Administrative Services · Not an insurance agent or broker
       </footer>
     </div>
   );

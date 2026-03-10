@@ -18,7 +18,7 @@ export default function BlogPost() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    if (post) document.title = `${post.title} | CertFlow`;
+    if (post) document.title = `${post.title} | CertFlo`;
   }, [slug]);
 
   useEffect(() => {
@@ -86,7 +86,7 @@ export default function BlogPost() {
             <span style={{
               fontSize: 18, fontWeight: 800, color: "#E8A020",
               fontFamily: "'Playfair Display', Georgia, serif", letterSpacing: 2,
-            }}>CERTFLOW</span>
+            }}>CertFlo</span>
           </div>
           <div style={{ display: "flex", gap: 24, alignItems: "center" }}>
             <button onClick={() => navigate("/blog")} style={{
@@ -226,7 +226,7 @@ export default function BlogPost() {
             border: "1px solid rgba(232,160,32,0.1)",
             borderRadius: 12, padding: 22, marginBottom: 14,
           }}>
-            <div style={{ fontSize: 9, fontFamily: "monospace", letterSpacing: "0.25em", color: "#E8A020", marginBottom: 12 }}>ABOUT CERTFLOW</div>
+            <div style={{ fontSize: 9, fontFamily: "monospace", letterSpacing: "0.25em", color: "#E8A020", marginBottom: 12 }}>ABOUT CertFlo</div>
             <p style={{ fontSize: 12, color: "#556", lineHeight: 1.6, marginBottom: 14 }}>
               AI-powered COI automation for small trucking insurance agencies.
               CSRs email requests — ACORD 25 certs come back in minutes. Flat rate. No contracts.
@@ -286,7 +286,7 @@ export default function BlogPost() {
         background: "#040810", textAlign: "center",
         fontSize: 11, color: "#334", fontFamily: "monospace", letterSpacing: "0.06em",
       }}>
-        © {new Date().getFullYear()} CertFlow Administrative Services · Not an insurance agent or broker
+        © {new Date().getFullYear()} CertFlo Administrative Services · Not an insurance agent or broker
       </footer>
     </div>
   );

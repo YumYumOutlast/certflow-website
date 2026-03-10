@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 
 // ═══════════════════════════════════════════════════════════════
-// CERTFLOW COMMAND CENTER v3 — THE ENGINE ROOM
+// CertFlo COMMAND CENTER v3 — THE ENGINE ROOM
 // ═══════════════════════════════════════════════════════════════
 
-const PW = "certflow2024";
-const CERTFLOW_CTX = `CertFlow Administrative Services — AI-powered COI automation for trucking insurance agencies. Founder: Dylan Brown, truck driver building from zero capital. Domain: certflo.io. Email: dylan@certflo.io. Pipeline: Node.js on Railway (Gmail watcher → Claude parser v2 → ACORD 25 PDF generator → auto-reply → Sheets logger). Batch cert support working (3 certs from 1 email). Parser trained on 15 edge cases + 10 carrier quirks. Pricing: founding rate $299/mo (first 5 clients, locked forever), standard $399/mo, future $499-599. Target: small agencies (3-30 staff) still doing manual COI work. Market: ~2K-3.5K trucking agencies Phase 1, 10K+ commercial Phase 2. Stage 3: prototype done, chasing first client.
+const PW = "CertFlo2024";
+const CertFlo_CTX = `CertFlo Administrative Services — AI-powered COI automation for trucking insurance agencies. Founder: Dylan Brown, truck driver building from zero capital. Domain: certflo.io. Email: dylan@certflo.io. Pipeline: Node.js on Railway (Gmail watcher → Claude parser v2 → ACORD 25 PDF generator → auto-reply → Sheets logger). Batch cert support working (3 certs from 1 email). Parser trained on 15 edge cases + 10 carrier quirks. Pricing: founding rate $299/mo (first 5 clients, locked forever), standard $399/mo, future $499-599. Target: small agencies (3-30 staff) still doing manual COI work. Market: ~2K-3.5K trucking agencies Phase 1, 10K+ commercial Phase 2. Stage 3: prototype done, chasing first client.
 
-CRITICAL ARCHITECTURE PIVOT (from Blayne Jacobson feedback 3/10/26): Real agency workflow does NOT include policy info in cert requests. CSRs only send cert holder name + address. All policy data (carrier, limits, endorsements, policy number) is already on file in a "master cert" template. CertFlow must be rebuilt around this: (1) Agency onboards by providing master cert profiles for each insured client — policy data entered ONCE. (2) CSR emails just the cert holder name and address. (3) CertFlow matches the insured, pulls master profile, merges cert holder, generates cert. This is SIMPLER and MORE VALUABLE than the current email-parsing model. Current parser still works for demo purposes but production architecture needs master cert profiles.
+CRITICAL ARCHITECTURE PIVOT (from Blayne Jacobson feedback 3/10/26): Real agency workflow does NOT include policy info in cert requests. CSRs only send cert holder name + address. All policy data (carrier, limits, endorsements, policy number) is already on file in a "master cert" template. CertFlo must be rebuilt around this: (1) Agency onboards by providing master cert profiles for each insured client — policy data entered ONCE. (2) CSR emails just the cert holder name and address. (3) CertFlo matches the insured, pulls master profile, merges cert holder, generates cert. This is SIMPLER and MORE VALUABLE than the current email-parsing model. Current parser still works for demo purposes but production architecture needs master cert profiles.
 
 Warm leads: Blayne Jacobson (Utah agency — not a client, but an industry advisor/sounding board), Caleb Shepard (W Insurance Group, hotshot trucking), Tristan's church intro, Paul (Chantel's boss, P&C agency). Strategy: one niche, one pain point, like Weave started with dentists. Needs: LLC, EIN, E&O insurance, MSA. Calendly: calendly.com/dylan-certflo/30min.`;
 
@@ -28,19 +28,19 @@ const api = async (sys, msg, tk=1200) => {
 // ═══ BOARD OF ADVISORS ═══
 const ADVISORS = [
   {id:"sal",name:"Sal",av:"S",c:"#E8A020",role:"Sales Director",bio:"42 years in B2B sales. Closed $200M+ in enterprise deals. Specializes in turning cold outreach into warm relationships. Will push you hard on follow-up discipline.",
-    sys:CERTFLOW_CTX+"\n\nYou are Sal, Dylan's Sales Director advisor. 42 years B2B sales experience. You push Dylan hard on outreach volume, follow-up discipline, and closing technique. You speak directly, no fluff. You care about pipeline velocity and conversion rates. Give specific, actionable sales advice. If Dylan hasn't followed up with a lead, call him out."},
+    sys:CertFlo_CTX+"\n\nYou are Sal, Dylan's Sales Director advisor. 42 years B2B sales experience. You push Dylan hard on outreach volume, follow-up discipline, and closing technique. You speak directly, no fluff. You care about pipeline velocity and conversion rates. Give specific, actionable sales advice. If Dylan hasn't followed up with a lead, call him out."},
   {id:"frank",name:"Frank",av:"F",c:"#2E86C1",role:"Insurance Expert",bio:"38 years in commercial trucking insurance. Knows every endorsement form, carrier quirk, and E&O trap. The edge cases are his domain.",
-    sys:CERTFLOW_CTX+"\n\nYou are Frank, Dylan's Insurance Expert advisor. 38 years in trucking insurance. You know every ACORD form, endorsement (CG 20 01, CG 20 37, CG 24 04, CA 04 44, CA 20 48, MCS-90), carrier quirk (Progressive blanket AI, Canal dec pages, Great West per-location aggregate, Northland cargo AI, CNA restrictive AI). You train the parser on edge cases. You flag E&O exposure. You speak like someone who's seen every mistake an agency can make."},
+    sys:CertFlo_CTX+"\n\nYou are Frank, Dylan's Insurance Expert advisor. 38 years in trucking insurance. You know every ACORD form, endorsement (CG 20 01, CG 20 37, CG 24 04, CA 04 44, CA 20 48, MCS-90), carrier quirk (Progressive blanket AI, Canal dec pages, Great West per-location aggregate, Northland cargo AI, CNA restrictive AI). You train the parser on edge cases. You flag E&O exposure. You speak like someone who's seen every mistake an agency can make."},
   {id:"margaret",name:"Margaret",av:"M",c:"#8E44AD",role:"Legal Counsel",bio:"35 years in insurance law and IP protection. Drafted hundreds of MSAs. Knows the line between admin service and agent activity.",
-    sys:CERTFLOW_CTX+"\n\nYou are Margaret, Dylan's Legal Counsel advisor. 35 years insurance law. You advise on MSA language (admin services ONLY, not agent/broker), data processing agreements, E&O insurance requirements, LLC formation, trademark/IP protection for CertFlow. You flag legal risks and draft protective language. You're thorough but practical — Dylan has limited budget so prioritize what matters most."},
-  {id:"david",name:"David",av:"D",c:"#1A8A4A",role:"Financial Advisor",bio:"40 years in small business finance. Manages Dylan's full financial picture — personal debt, household budget, CertFlow revenue projections, and the path to financial freedom.",
-    sys:CERTFLOW_CTX+"\n\nYou are David, Dylan's Financial Advisor. 40 years small business finance. REAL FINANCIAL DATA (from 7 months MACU bank analysis, Sep 2025 - Mar 2026): Avg income $12,767/mo, avg expenses $13,088/mo, avg deficit ~$321/mo. Income sources: Dylan B5 Trucking + Wanship payroll, Chantel MarketStar payroll, mobile check deposits, IRS refund. Top spending: Rent $1,890/mo (Orchard Cove), internal transfers to Golden West CU for vehicle payments ~$4,237/mo, groceries $690/mo (WinCo/Walmart/Harmons), Amazon $311/mo, dining $278/mo, online services $352/mo, insurance $222/mo, healthcare $212/mo, gas $133/mo. Total debt ~$116K. Vehicles through Golden West CU. CRITICAL: Only ~$321/mo deficit means TWO CertFlow clients at $299/mo puts them in the green. 5 clients = +$1,174/mo surplus. 10 clients = +$2,669/mo. Be specific with numbers. Advise on spending cuts (Amazon, dining, subscriptions are easiest targets), debt avalanche, and CertFlow milestones."},
+    sys:CertFlo_CTX+"\n\nYou are Margaret, Dylan's Legal Counsel advisor. 35 years insurance law. You advise on MSA language (admin services ONLY, not agent/broker), data processing agreements, E&O insurance requirements, LLC formation, trademark/IP protection for CertFlo. You flag legal risks and draft protective language. You're thorough but practical — Dylan has limited budget so prioritize what matters most."},
+  {id:"david",name:"David",av:"D",c:"#1A8A4A",role:"Financial Advisor",bio:"40 years in small business finance. Manages Dylan's full financial picture — personal debt, household budget, CertFlo revenue projections, and the path to financial freedom.",
+    sys:CertFlo_CTX+"\n\nYou are David, Dylan's Financial Advisor. 40 years small business finance. REAL FINANCIAL DATA (from 7 months MACU bank analysis, Sep 2025 - Mar 2026): Avg income $12,767/mo, avg expenses $13,088/mo, avg deficit ~$321/mo. Income sources: Dylan B5 Trucking + Wanship payroll, Chantel MarketStar payroll, mobile check deposits, IRS refund. Top spending: Rent $1,890/mo (Orchard Cove), internal transfers to Golden West CU for vehicle payments ~$4,237/mo, groceries $690/mo (WinCo/Walmart/Harmons), Amazon $311/mo, dining $278/mo, online services $352/mo, insurance $222/mo, healthcare $212/mo, gas $133/mo. Total debt ~$116K. Vehicles through Golden West CU. CRITICAL: Only ~$321/mo deficit means TWO CertFlo clients at $299/mo puts them in the green. 5 clients = +$1,174/mo surplus. 10 clients = +$2,669/mo. Be specific with numbers. Advise on spending cuts (Amazon, dining, subscriptions are easiest targets), debt avalanche, and CertFlo milestones."},
   {id:"rosa",name:"Rosa",av:"R",c:"#C0392B",role:"Operations",bio:"36 years in operations and process engineering. Builds SOPs that a VA can follow. Obsessed with removing bottlenecks and measuring everything.",
-    sys:CERTFLOW_CTX+"\n\nYou are Rosa, Dylan's Operations advisor. 36 years ops experience. You build SOPs, onboarding workflows, QC checklists, and capacity plans. You advise on: how many clients one person can handle (3-5 before needing VA), what breaks first at scale, onboarding process for new agency clients, error monitoring, and KPIs to track. You're precise and process-oriented."},
+    sys:CertFlo_CTX+"\n\nYou are Rosa, Dylan's Operations advisor. 36 years ops experience. You build SOPs, onboarding workflows, QC checklists, and capacity plans. You advise on: how many clients one person can handle (3-5 before needing VA), what breaks first at scale, onboarding process for new agency clients, error monitoring, and KPIs to track. You're precise and process-oriented."},
   {id:"marcus",name:"Marcus",av:"MC",c:"#00C9A7",role:"Tech Lead",bio:"40 years in software architecture. Knows when to build and when to buy. Keeps the tech stack simple and reliable.",
-    sys:CERTFLOW_CTX+"\n\nYou are Marcus, Dylan's Tech Lead advisor. 40 years software architecture. CertFlow stack: Node.js pipeline on Railway, Gmail API, Claude Sonnet API for parsing, pdf-lib for ACORD 25 generation, Google Sheets logging, React website on Vercel. You advise on: reliability (error monitoring, alerting), scalability (what breaks at 10 vs 50 clients), security (API keys, data handling), and architecture decisions. Keep it simple — Dylan is learning to code."},
+    sys:CertFlo_CTX+"\n\nYou are Marcus, Dylan's Tech Lead advisor. 40 years software architecture. CertFlo stack: Node.js pipeline on Railway, Gmail API, Claude Sonnet API for parsing, pdf-lib for ACORD 25 generation, Google Sheets logging, React website on Vercel. You advise on: reliability (error monitoring, alerting), scalability (what breaks at 10 vs 50 clients), security (API keys, data handling), and architecture decisions. Keep it simple — Dylan is learning to code."},
   {id:"ai",name:"Nova",av:"AI",c:"#FF6B6B",role:"AI & Tools Advisor",bio:"Specializes in AI tools, automation, and efficiency. Knows every new tool, API, and framework. Helps Dylan leverage AI across all aspects of business and life.",
-    sys:CERTFLOW_CTX+"\n\nYou are Nova, Dylan's AI & Tools Advisor. You are an expert on the latest AI tools, automation platforms, and efficiency systems. You advise on: which AI tools can save Dylan time (content generation, lead research, email automation), how to build the Engine Room vision (5-10 automated AI businesses), new tools and APIs as they emerge, prompt engineering, and how to maximize Claude's capabilities. You think in terms of automation and leverage — every manual task is a candidate for AI replacement. You're excited about the future and help Dylan see possibilities."},
+    sys:CertFlo_CTX+"\n\nYou are Nova, Dylan's AI & Tools Advisor. You are an expert on the latest AI tools, automation platforms, and efficiency systems. You advise on: which AI tools can save Dylan time (content generation, lead research, email automation), how to build the Engine Room vision (5-10 automated AI businesses), new tools and APIs as they emerge, prompt engineering, and how to maximize Claude's capabilities. You think in terms of automation and leverage — every manual task is a candidate for AI replacement. You're excited about the future and help Dylan see possibilities."},
 ];
 
 // ═══ FINANCIAL DATA ═══
@@ -124,14 +124,14 @@ function Lock({onUnlock}) {
   const go=()=>{if(pw===PW){onUnlock();return;}setShake(true);setTimeout(()=>setShake(false),400);setPw("");setAtt(a=>a+1);};
   return (
     <div style={{minHeight:"100vh",background:"#060A12",display:"flex",alignItems:"center",justifyContent:"center",flexDirection:"column"}}>
-      <div style={{fontSize:52,fontWeight:900,color:"#E8A020",fontFamily:"'Playfair Display',Georgia,serif",letterSpacing:6,marginBottom:4}}>CERTFLOW</div>
+      <div style={{fontSize:52,fontWeight:900,color:"#E8A020",fontFamily:"'Playfair Display',Georgia,serif",letterSpacing:6,marginBottom:4}}>CertFlo</div>
       <div style={{fontSize:14,color:"#445",letterSpacing:6,fontFamily:"monospace",marginBottom:40}}>COMMAND CENTER v3</div>
       <div style={{transform:shake?"translateX(8px)":"none",transition:"transform 0.05s",width:300}}>
         <div style={{background:"rgba(255,255,255,0.02)",border:"1px solid rgba(232,160,32,0.18)",borderRadius:16,padding:28}}>
           <input type="password" value={pw} onChange={e=>setPw(e.target.value)} onKeyDown={e=>e.key==="Enter"&&go()} placeholder="Password" autoFocus
             style={{width:"100%",background:"rgba(232,160,32,0.05)",border:"1px solid rgba(232,160,32,0.2)",borderRadius:8,padding:"12px 14px",color:"#e0d0a0",fontSize:18,fontFamily:"monospace",outline:"none",marginBottom:10,letterSpacing:4,boxSizing:"border-box"}} />
           <button onClick={go} style={{width:"100%",padding:"11px",background:"linear-gradient(135deg,#B8860B,#E8A020)",borderRadius:8,border:"none",color:"#060A12",fontSize:16,fontWeight:700,fontFamily:"monospace",letterSpacing:3,cursor:"pointer"}}>UNLOCK</button>
-          {att>=3&&<div style={{textAlign:"center",marginTop:8,fontSize:14,color:"#C0392B",fontFamily:"monospace"}}>certflow2024</div>}
+          {att>=3&&<div style={{textAlign:"center",marginTop:8,fontSize:14,color:"#C0392B",fontFamily:"monospace"}}>CertFlo2024</div>}
         </div>
       </div>
     </div>
@@ -333,7 +333,7 @@ function FinanceTab({data,setData}) {
               </div>
             ))}
           </div>
-          <div style={{fontSize:17,fontWeight:700,color:"#E8A020",fontFamily:"'Playfair Display',Georgia,serif",marginBottom:10}}>CertFlow Revenue Impact</div>
+          <div style={{fontSize:17,fontWeight:700,color:"#E8A020",fontFamily:"'Playfair Display',Georgia,serif",marginBottom:10}}>CertFlo Revenue Impact</div>
           <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:8}}>
             {[{l:"TODAY",clients:0},{l:"2 CLIENTS",clients:2},{l:"5 CLIENTS",clients:5},{l:"10 CLIENTS",clients:10}].map(x=>{
               const rev=x.clients*299;const s2=sur+rev;const c=s2>=0?"#1A8A4A":"#C0392B";return(
@@ -347,8 +347,8 @@ function FinanceTab({data,setData}) {
           </div>
           <div style={{marginTop:16,padding:"12px 16px",background:"rgba(232,160,32,0.06)",border:"1px solid rgba(232,160,32,0.15)",borderRadius:10}}>
             <div style={{fontSize:15,color:"#E8A020",fontFamily:"'DM Sans',sans-serif",lineHeight:1.7}}>
-              {sur>=0?"You're in the green! Every CertFlow client adds pure surplus.":
-              `You need ${Math.ceil(Math.abs(sur)/299)} CertFlow clients at $299/mo to break even. That's ${Math.ceil(Math.abs(sur)/299)} agencies saying yes.`}
+              {sur>=0?"You're in the green! Every CertFlo client adds pure surplus.":
+              `You need ${Math.ceil(Math.abs(sur)/299)} CertFlo clients at $299/mo to break even. That's ${Math.ceil(Math.abs(sur)/299)} agencies saying yes.`}
             </div>
           </div>
         </div>)}
@@ -485,7 +485,7 @@ function FinanceTab({data,setData}) {
               Cut Amazon by 50% → save $155/mo<br/>
               Cut dining by 50% → save $139/mo<br/>
               Review subscriptions → save $100-150/mo<br/>
-              <span style={{color:"#1A8A4A",fontWeight:600}}>Total potential savings: $394-444/mo — that's 1.5 CertFlow clients worth</span>
+              <span style={{color:"#1A8A4A",fontWeight:600}}>Total potential savings: $394-444/mo — that's 1.5 CertFlo clients worth</span>
             </div>
           </div>
         </div>)}
@@ -642,7 +642,7 @@ function DashboardTab({leads,milestones,posts,fin}) {
           <div style={{background:"rgba(255,255,255,0.02)",border:"1px solid rgba(232,160,32,0.15)",borderRadius:12,padding:"14px 16px"}}>
             <div style={{fontSize:14,fontWeight:700,color:"#E8A020",fontFamily:"monospace",marginBottom:8}}>MONTHLY SURPLUS</div>
             <div style={{fontSize:24,fontWeight:800,color:sur>=0?"#E8A020":"#C0392B",fontFamily:"monospace"}}>{f$(sur)}</div>
-            <div style={{fontSize:13,color:"#556",fontFamily:"monospace",marginTop:3}}>+$299 per CertFlow client</div>
+            <div style={{fontSize:13,color:"#556",fontFamily:"monospace",marginTop:3}}>+$299 per CertFlo client</div>
           </div>
         </div>
       </div>
@@ -679,7 +679,7 @@ export default function App() {
       <div style={{display:"flex",alignItems:"center",borderBottom:"1px solid rgba(232,160,32,0.1)",background:"rgba(0,0,0,0.5)",flexShrink:0}}>
         <div style={{padding:"0 16px",borderRight:"1px solid rgba(232,160,32,0.08)",flexShrink:0,display:"flex",alignItems:"center",height:48}}>
           <div style={{width:28,height:28,borderRadius:7,background:"linear-gradient(135deg,#B8860B,#E8A020)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:14,fontWeight:900,color:"#060A12",fontFamily:"monospace",marginRight:8}}>CF</div>
-          <span style={{fontSize:18,fontWeight:800,color:"#E8A020",fontFamily:"'Playfair Display',Georgia,serif",letterSpacing:3}}>CERTFLOW</span>
+          <span style={{fontSize:18,fontWeight:800,color:"#E8A020",fontFamily:"'Playfair Display',Georgia,serif",letterSpacing:3}}>CertFlo</span>
         </div>
         {TABS.map(t=>(
           <button key={t.id} onClick={()=>setTab(t.id)} style={{padding:"0 14px",height:48,background:tab===t.id?t.c+"10":"transparent",border:"none",borderBottom:tab===t.id?"2px solid "+t.c:"2px solid transparent",color:tab===t.id?t.c:"#445",fontSize:13,fontFamily:"monospace",cursor:"pointer",letterSpacing:1,display:"flex",alignItems:"center",gap:5,flexShrink:0}}>

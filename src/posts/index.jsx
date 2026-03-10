@@ -113,11 +113,11 @@ export const posts = [
         "answer": "MCS-90, CG 20 01, CG 20 37, CA 04 44, and hired/non-owned auto are the most common. Each has carrier-specific variations that affect how they appear on the certificate."
       },
       {
-        "question": "How does CertFlow handle carrier-specific COI quirks?",
-        "answer": "CertFlow is trained on carrier-specific behaviors for Progressive, Canal, Northland, Great West, CNA, NL&F, Sentry, Auto-Owners, and Midwest regional carriers — each with documented processing rules."
+        "question": "How does CertFlo handle carrier-specific COI quirks?",
+        "answer": "CertFlo is trained on carrier-specific behaviors for Progressive, Canal, Northland, Great West, CNA, NL&F, Sentry, Auto-Owners, and Midwest regional carriers — each with documented processing rules."
       }
     ],
-    "cta": "If your team is spending significant time on certificate requests, we're happy to show you exactly how CertFlow handles these edge cases in a live 20-minute demo. Book at certflo.io or reach out to dylan@certflo.io."
+    "cta": "If your team is spending significant time on certificate requests, we're happy to show you exactly how CertFlo handles these edge cases in a live 20-minute demo. Book at certflo.io or reach out to dylan@certflo.io."
   }
 ];
 

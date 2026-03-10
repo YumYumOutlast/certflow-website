@@ -58,12 +58,12 @@ function Nav({ active }) {
               fontSize: 18, fontWeight: 800, color: "#E8A020",
               fontFamily: "'Playfair Display', Georgia, serif", letterSpacing: 2,
               userSelect: "none", cursor: "default",
-            }}>CERTFLOW</span>
+            }}>CertFlo</span>
         </div>
 
         {/* Desktop nav */}
         <div className="desktop-nav" style={{ display: "flex", gap: 24, alignItems: "center" }}>
-          {[["how", "How It Works"], ["why", "Why CertFlow"], ["faq", "FAQ"], ["contact", "Contact"]].map(([id, label]) => (
+          {[["how", "How It Works"], ["why", "Why CertFlo"], ["faq", "FAQ"], ["contact", "Contact"]].map(([id, label]) => (
             <button key={id} onClick={() => scrollTo(id)} style={{
               background: "none", border: "none",
               color: active === id ? "#E8A020" : "#8a8a9a",
@@ -178,7 +178,7 @@ function Hero() {
 function HowItWorks() {
   const steps = [
     { num: "01", title: "CSR Sends Email", desc: "Your CSR emails the COI request in plain English. No forms, no templates required. Shorthand, messy, however they normally write — it all works.", icon: "✉️", color: "#2E86C1" },
-    { num: "02", title: "AI Extracts & Validates", desc: "CertFlow's AI reads the email, extracts every ACORD 25 field, identifies endorsement requirements, and validates against carrier-specific rules.", icon: "🧠", color: "#00C9A7" },
+    { num: "02", title: "AI Extracts & Validates", desc: "CertFlo's AI reads the email, extracts every ACORD 25 field, identifies endorsement requirements, and validates against carrier-specific rules.", icon: "🧠", color: "#00C9A7" },
     { num: "03", title: "Certificate Generated", desc: "A completed ACORD 25 certificate is generated with proper endorsement forms, coverage limits, and cert holder information — all verified.", icon: "📄", color: "#E8A020" },
     { num: "04", title: "Delivered in Minutes", desc: "The completed certificate is sent back to the CSR's email thread with the PDF attached. Ready to forward to the certificate holder.", icon: "⚡", color: "#8E44AD" },
   ];
@@ -204,7 +204,7 @@ function HowItWorks() {
   );
 }
 
-function WhyCertFlow() {
+function WhyCertFlo() {
   const features = [
     { title: "Deep Trucking Intelligence", desc: "Trained on 15+ real-world edge cases and 10+ carrier-specific quirks. Knows Progressive's blanket AI endorsements, Canal's non-standard dec pages, Great West's per-location aggregates, and more.", color: "#2E86C1" },
     { title: "Endorsement Aware", desc: "Correctly handles CG 20 01, CG 20 37, CA 04 44, CG 24 04, MCS-90, and dozens of other endorsement forms. Knows the difference between loss payee and additional insured.", color: "#00C9A7" },
@@ -237,11 +237,11 @@ function WhyCertFlow() {
 function FAQ() {
   const [open, setOpen] = useState(null);
   const faqs = [
-    { q: "What exactly does CertFlow do?", a: "CertFlow automates the intake and processing of Certificate of Insurance requests for trucking insurance agencies. Your CSR emails a COI request in plain English, and CertFlow's AI extracts all ACORD 25 fields, validates endorsements, generates the certificate, and sends it back — in minutes instead of 20-30 minutes of manual work." },
-    { q: "Does CertFlow replace our agency management system?", a: "No. CertFlow works alongside your existing AMS. We handle the intake and data extraction — reading the email, identifying fields, validating endorsements. We're the brain between the email and the form." },
-    { q: "Is CertFlow acting as an insurance agent or broker?", a: "No. CertFlow provides administrative and clerical data processing services only. We do not bind coverage, make coverage recommendations, or act as a producer on any certificate." },
-    { q: "What endorsements and edge cases does it handle?", a: "CertFlow is trained on 15+ real-world trucking COI edge cases including additional insured (CG 20 01, CG 20 10), primary and non-contributory (CG 20 37), waiver of subrogation (CG 24 04 for GL, CA 04 44 for auto), MCS-90, loss payee vs additional insured, batch requests, and more. It also has carrier-specific intelligence for Progressive, Canal, Northland, Great West, CNA, and others." },
-    { q: "How much does it cost?", a: "CertFlow is a flat monthly fee per agency. Founding rate is $299/mo for the first 5 agencies — locked forever. No per-certificate charges, no setup fees." },
+    { q: "What exactly does CertFlo do?", a: "CertFlo automates the intake and processing of Certificate of Insurance requests for trucking insurance agencies. Your CSR emails a COI request in plain English, and CertFlo's AI extracts all ACORD 25 fields, validates endorsements, generates the certificate, and sends it back — in minutes instead of 20-30 minutes of manual work." },
+    { q: "Does CertFlo replace our agency management system?", a: "No. CertFlo works alongside your existing AMS. We handle the intake and data extraction — reading the email, identifying fields, validating endorsements. We're the brain between the email and the form." },
+    { q: "Is CertFlo acting as an insurance agent or broker?", a: "No. CertFlo provides administrative and clerical data processing services only. We do not bind coverage, make coverage recommendations, or act as a producer on any certificate." },
+    { q: "What endorsements and edge cases does it handle?", a: "CertFlo is trained on 15+ real-world trucking COI edge cases including additional insured (CG 20 01, CG 20 10), primary and non-contributory (CG 20 37), waiver of subrogation (CG 24 04 for GL, CA 04 44 for auto), MCS-90, loss payee vs additional insured, batch requests, and more. It also has carrier-specific intelligence for Progressive, Canal, Northland, Great West, CNA, and others." },
+    { q: "How much does it cost?", a: "CertFlo is a flat monthly fee per agency. Founding rate is $299/mo for the first 5 agencies — locked forever. No per-certificate charges, no setup fees." },
     { q: "How long does implementation take?", a: "Most agencies are up and running within a week. Your CSRs don't need training — they just email requests the way they always have." },
   ];
   return (
@@ -308,9 +308,9 @@ function Footer() {
   return (
     <footer style={{ padding: "40px 24px", borderTop: "1px solid rgba(232,160,32,0.08)", background: "#040810" }}>
       <div style={{ maxWidth: 1000, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
-        <div style={{ fontSize: 13, fontWeight: 700, color: "#E8A020", fontFamily: "'Playfair Display', Georgia, serif", letterSpacing: 2 }}>CERTFLOW</div>
-        <div style={{ fontSize: 11, color: "#445", fontFamily: "'DM Sans', sans-serif" }}>CertFlow Administrative Services LLC · Administrative COI Processing</div>
-        <div style={{ fontSize: 11, color: "#445", fontFamily: "'DM Sans', sans-serif" }}>© 2026 CertFlow. All rights reserved.</div>
+        <div style={{ fontSize: 13, fontWeight: 700, color: "#E8A020", fontFamily: "'Playfair Display', Georgia, serif", letterSpacing: 2 }}>CertFlo</div>
+        <div style={{ fontSize: 11, color: "#445", fontFamily: "'DM Sans', sans-serif" }}>CertFlo Administrative Services LLC · Administrative COI Processing</div>
+        <div style={{ fontSize: 11, color: "#445", fontFamily: "'DM Sans', sans-serif" }}>© 2026 CertFlo. All rights reserved.</div>
       </div>
     </footer>
   );
@@ -345,7 +345,7 @@ function HomePage() {
       <Nav active={active} />
       <Hero />
       <HowItWorks />
-      <WhyCertFlow />
+      <WhyCertFlo />
       <FAQ />
       <Contact />
       <Footer />
