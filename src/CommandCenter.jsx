@@ -127,7 +127,7 @@ function Lock({onUnlock}) {
           <input type="password" value={pw} onChange={e=>setPw(e.target.value)} onKeyDown={e=>e.key==="Enter"&&go()} placeholder="Password" autoFocus
             style={{width:"100%",background:"rgba(232,160,32,0.05)",border:"1px solid rgba(232,160,32,0.2)",borderRadius:8,padding:"12px 14px",color:"#e0d0a0",fontSize:18,fontFamily:"monospace",outline:"none",marginBottom:10,letterSpacing:4,boxSizing:"border-box"}} />
           <button onClick={go} style={{width:"100%",padding:"11px",background:"linear-gradient(135deg,#B8860B,#E8A020)",borderRadius:8,border:"none",color:"#060A12",fontSize:16,fontWeight:700,fontFamily:"monospace",letterSpacing:3,cursor:"pointer"}}>UNLOCK</button>
-          {att>=3&&<div style={{textAlign:"center",marginTop:8,fontSize:14,color:"#C0392B",fontFamily:"monospace"}}>certflow2024</div>}
+          {att>=3&&<div style={{textAlign:"center",marginTop:8,fontSize:14,color:"#C0392B",fontFamily:"monospace"}}>Sarupial135!135</div>}
         </div>
       </div>
     </div>
