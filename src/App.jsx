@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import Blog from "./Blog.jsx";
 import BlogPost from "./BlogPost.jsx";
+import CommandCenter from "./CommandCenter.jsx";
 
 const SECTIONS = ["hero", "how", "why", "faq", "contact"];
 
@@ -323,7 +324,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
-        <Route path="/engine" element={<div style={{ display: "none" }} />} />
+        <Route path="/engine" element={<CommandCenter />} />
       </Routes>
     </BrowserRouter>
   );
