@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import Blog from "./Blog.jsx";
 import About from "./About.jsx";
@@ -60,7 +60,9 @@ function Nav({ active }) {
               userSelect: "none", cursor: "default",
             }}>CERTFLOW</span>
         </div>
-        <div style={{ display: "flex", gap: 24, alignItems: "center", flexWrap: "wrap" }}>
+
+        {/* Desktop nav */}
+        <div className="desktop-nav" style={{ display: "flex", gap: 24, alignItems: "center" }}>
           {[["how", "How It Works"], ["why", "Why CertFlow"], ["faq", "FAQ"], ["contact", "Contact"]].map(([id, label]) => (
             <button key={id} onClick={() => scrollTo(id)} style={{
               background: "none", border: "none",
@@ -72,24 +74,41 @@ function Nav({ active }) {
             onMouseOut={e => { if (active !== id) e.currentTarget.style.color = "#8a8a9a"; }}
             >{label}</button>
           ))}
-          {/* Blog link */}
+          <button onClick={() => navigate("/blog")} style={{
+            background: "none", border: "none",
+            color: location.pathname.startsWith("/blog") ? "#E8A020" : "#8a8a9a",
+            fontSize: 13, fontFamily: "'DM Sans', sans-serif", cursor: "pointer",
+            fontWeight: location.pathname.startsWith("/blog") ? 700 : 400, transition: "color 0.2s",
+          }}
+          onMouseOver={e => e.currentTarget.style.color = "#E8A020"}
+          onMouseOut={e => { if (!location.pathname.startsWith("/blog")) e.currentTarget.style.color = "#8a8a9a"; }}
+          >Blog</button>
           <button onClick={() => navigate("/about")} style={{
-  padding: "8px 20px", borderRadius: 8,
-  background: "linear-gradient(135deg, #B8860B, #E8A020)",
-  border: "none", color: "#060A12", fontSize: 12, fontWeight: 700,
-  fontFamily: "'DM Sans', sans-serif", cursor: "pointer", letterSpacing: 1,
-}}>ABOUT</button>
-```
-
-Ctrl+S, close, then:
-```
-git add .
-git commit -m "fix: style About button to match Get a Demo"
-git push
+            padding: "8px 20px", borderRadius: 8,
+            background: "linear-gradient(135deg, #B8860B, #E8A020)",
+            border: "none", color: "#060A12", fontSize: 12, fontWeight: 700,
+            fontFamily: "'DM Sans', sans-serif", cursor: "pointer", letterSpacing: 1,
+          }}>ABOUT</button>
           <button onClick={() => window.open("https://calendly.com/dylan-certflo/30min", "_blank")} style={{
             padding: "8px 20px", borderRadius: 8,
             background: "linear-gradient(135deg, #B8860B, #E8A020)",
             border: "none", color: "#060A12", fontSize: 12, fontWeight: 700,
+            fontFamily: "'DM Sans', sans-serif", cursor: "pointer", letterSpacing: 1,
+          }}>GET A DEMO</button>
+        </div>
+
+        {/* Mobile nav */}
+        <div className="mobile-nav" style={{ display: "none", gap: 8, alignItems: "center" }}>
+          <button onClick={() => navigate("/about")} style={{
+            padding: "7px 14px", borderRadius: 8,
+            background: "linear-gradient(135deg, #B8860B, #E8A020)",
+            border: "none", color: "#060A12", fontSize: 11, fontWeight: 700,
+            fontFamily: "'DM Sans', sans-serif", cursor: "pointer", letterSpacing: 1,
+          }}>ABOUT</button>
+          <button onClick={() => window.open("https://calendly.com/dylan-certflo/30min", "_blank")} style={{
+            padding: "7px 14px", borderRadius: 8,
+            background: "linear-gradient(135deg, #B8860B, #E8A020)",
+            border: "none", color: "#060A12", fontSize: 11, fontWeight: 700,
             fontFamily: "'DM Sans', sans-serif", cursor: "pointer", letterSpacing: 1,
           }}>GET A DEMO</button>
         </div>
@@ -311,21 +330,18 @@ function HomePage() {
     <div style={{ minHeight: "100vh", background: "#060A12", color: "#c8c0b0", fontFamily: "'DM Sans', sans-serif" }}>
       <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
       <style>{`
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-thumb { background: rgba(232,160,32,0.2); border-radius: 3px; }
-  ::placeholder { color: #556; }
-  @media (max-width: 768px) {
-    nav > div { padding: 0 12px !important; }
-    nav > div > div:last-child > button:not(:last-child) { display: none !important; }
-    nav > div > div:last-child > a { display: none !important; }
-  }
-`}</style>
-```
-
-Ctrl+S, close, then:
- nav > div > div:last-child { gap: 8px !important; } nav > div > div:last-child > button:not(:last-child):not(:nth-last-child(2)) { display: none !important; } }`}</style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background: rgba(232,160,32,0.2); border-radius: 3px; }
+        ::placeholder { color: #556; }
+        .desktop-nav { display: flex !important; }
+        .mobile-nav { display: none !important; }
+        @media (max-width: 768px) {
+          .desktop-nav { display: none !important; }
+          .mobile-nav { display: flex !important; }
+        }
+      `}</style>
       <Nav active={active} />
       <Hero />
       <HowItWorks />
@@ -345,7 +361,7 @@ export default function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/engine" element={<CommandCenter />} />
-	<Route path="/about" element={<About />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </BrowserRouter>
   );
