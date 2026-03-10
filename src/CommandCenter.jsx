@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 // CERTFLOW COMMAND CENTER v3 — THE ENGINE ROOM
 // ═══════════════════════════════════════════════════════════════
 
-const PW = "certflow2024";
+const PW = "Sarupial135!135";
 const CERTFLOW_CTX = `CertFlow Administrative Services — AI-powered COI automation for trucking insurance agencies. Founder: Dylan Brown, truck driver building from zero capital. Domain: certflo.io. Email: dylan@certflo.io. Pipeline: Node.js on Railway (Gmail watcher → Claude parser v2 → ACORD 25 PDF generator → auto-reply → Sheets logger). Batch cert support working (3 certs from 1 email). Parser trained on 15 edge cases + 10 carrier quirks. Pricing: founding rate $299/mo (first 5 clients, locked forever), standard $399/mo, future $499-599. Target: small agencies (3-30 staff) still doing manual COI work. Market: ~2K-3.5K trucking agencies Phase 1, 10K+ commercial Phase 2. Stage 3: prototype done, chasing first client. Warm leads: Blayne Jacobson (Utah agency, Zoom demo scheduling), Caleb Shepard (W Insurance Group, hotshot trucking), Tristan's church intro, Paul (Chantel's boss, P&C agency). Strategy: one niche, one pain point, like Weave started with dentists. Needs: LLC, EIN, E&O insurance, MSA. Calendly: calendly.com/dylan-certflo/30min.`;
 
 const f$ = (n) => "$" + Number(n||0).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
