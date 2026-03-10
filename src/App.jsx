@@ -37,10 +37,17 @@ function Nav({ active }) {
             display: "flex", alignItems: "center", justifyContent: "center",
             fontSize: 14, fontWeight: 900, color: "#060A12", fontFamily: "monospace",
           }}>CF</div>
-          <span style={{
-            fontSize: 18, fontWeight: 800, color: "#E8A020",
-            fontFamily: "'Playfair Display', Georgia, serif", letterSpacing: 2,
-          }}>CERTFLOW</span>
+          <span
+            onMouseDown={e => { e.currentTarget.dataset.timer = setTimeout(() => { window.open('/engine', '_blank'); }, 2000); }}
+            onMouseUp={e => { clearTimeout(e.currentTarget.dataset.timer); }}
+            onMouseLeave={e => { clearTimeout(e.currentTarget.dataset.timer); }}
+            onTouchStart={e => { e.currentTarget.dataset.timer = setTimeout(() => { window.open('/engine', '_blank'); }, 2000); }}
+            onTouchEnd={e => { clearTimeout(e.currentTarget.dataset.timer); }}
+            style={{
+              fontSize: 18, fontWeight: 800, color: "#E8A020",
+              fontFamily: "'Playfair Display', Georgia, serif", letterSpacing: 2,
+              userSelect: "none", cursor: "default",
+            }}>CERTFLOW</span>
         </div>
         <div style={{ display: "flex", gap: 28, alignItems: "center" }}>
           {[["how", "How It Works"], ["why", "Why CertFlow"], ["faq", "FAQ"], ["contact", "Contact"]].map(([id, label]) => (
