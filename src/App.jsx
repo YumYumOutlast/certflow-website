@@ -54,7 +54,7 @@ function Nav({ active }) {
             onMouseOut={e => { if (active !== id) e.currentTarget.style.color = "#8a8a9a"; }}
             >{label}</button>
           ))}
-          <button onClick={() => scrollTo("contact")} style={{
+          <button onClick={() => window.open("https://calendly.com/dylan-certflo/30min", "_blank")} style={{
             padding: "8px 20px", borderRadius: 8,
             background: "linear-gradient(135deg, #B8860B, #E8A020)",
             border: "none", color: "#060A12", fontSize: 12, fontWeight: 700,
@@ -99,7 +99,7 @@ function Hero() {
           Endorsements, carrier quirks, validation — all handled.
         </p>
         <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-          <button onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })} style={{
+          <button onClick={() => window.open("https://calendly.com/dylan-certflo/30min", "_blank")} style={{
             padding: "14px 32px", borderRadius: 10,
             background: "linear-gradient(135deg, #B8860B, #E8A020)",
             border: "none", color: "#060A12", fontSize: 15, fontWeight: 700,
