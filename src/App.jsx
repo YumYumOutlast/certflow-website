@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import Blog from "./Blog.jsx";
+import About from "./About.jsx";
 import BlogPost from "./BlogPost.jsx";
 import CommandCenter from "./CommandCenter.jsx";
 
@@ -325,6 +326,7 @@ export default function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/engine" element={<CommandCenter />} />
+	<Route path="/about" element={<About />} />
       </Routes>
     </BrowserRouter>
   );
