@@ -1,5 +1,57 @@
 export const posts = [
   {
+    "slug": "mcs-90-endorsements-what-trucking-agencies-get-wrong",
+    "title": "MCS-90 Endorsements: What Trucking Agencies Get Wrong",
+    "date": "2026-03-11",
+    "metaDescription": "Avoid costly MCS-90 endorsement mistakes that plague trucking agencies. Learn proper requirements, common errors, and compliance solutions.",
+    "primaryKeyword": "MCS-90 endorsements",
+    "tags": [
+      "MCS-90",
+      "trucking insurance",
+      "ACORD forms",
+      "insurance compliance"
+    ],
+    "readTime": "5 min read",
+    "author": "Dylan Brown",
+    "sections": [
+      {
+        "heading": "The Hidden Complexity Behind MCS-90 Endorsements",
+        "body": "MCS-90 endorsements represent one of the most misunderstood aspects of trucking insurance compliance. These federal endorsements aren't just another form to complete—they're a critical safety net that protects the public when trucking companies face financial hardship. Yet countless insurance agencies stumble through the MCS-90 process, creating compliance gaps that expose both carriers and their clients to significant risk. The complexity stems from the endorsement's unique role as a bridge between private insurance coverage and federal motor carrier requirements. Unlike standard insurance policies that protect the policyholder, MCS-90 endorsements specifically protect third parties, creating a direct obligation between the insurance company and the public regardless of policy violations or coverage disputes."
+      },
+      {
+        "heading": "When Agencies Misunderstand Coverage Amounts",
+        "body": "One of the most frequent errors involves coverage amount calculations for different types of motor carriers. Many agencies incorrectly assume all trucking operations require the same $750,000 minimum coverage, but FMCSA regulations specify different amounts based on cargo type and vehicle classification. For-hire carriers transporting non-hazardous materials need $750,000, while those carrying hazardous materials require $1 million or $5 million depending on the specific substances. Private carriers face different thresholds entirely. This confusion often leads to under-coverage situations where certificates of insurance show inadequate limits. When agencies rush through ACORD 25 certificate preparation without verifying these specific requirements, they create compliance vulnerabilities. The resulting documentation fails to meet shipper requirements, delays loads, and can trigger regulatory scrutiny during DOT audits."
+      },
+      {
+        "heading": "The Certificate of Insurance Disconnect",
+        "body": "Perhaps the most damaging mistake occurs when agencies fail to properly reflect MCS-90 endorsements on certificates of insurance. Some agencies omit the endorsement reference entirely, while others include incorrect policy numbers or effective dates that don't align with the underlying coverage. This creates a documentation trail that auditors and shippers can't reconcile. The ACORD 25 form includes specific fields for endorsements, yet many agencies treat these as optional or fill them out inconsistently. When trucking companies present certificates without proper MCS-90 documentation, shippers may reject loads or demand additional insurance verification. This operational disruption costs time and money while potentially damaging client relationships. Proper certificate preparation requires understanding both the insurance policy structure and how endorsements modify coverage for regulatory compliance purposes."
+      },
+      {
+        "heading": "Filing and Regulatory Compliance Oversights",
+        "body": "Insurance agencies often overlook the dual filing requirements that make MCS-90 endorsements unique in commercial insurance. The endorsement must be filed with both state insurance departments and the Federal Motor Carrier Safety Administration, with specific timing requirements for each. Some agencies assume filing with one entity satisfies both requirements, while others delegate filing responsibilities without proper follow-up verification. State filing deadlines vary significantly, and FMCSA has its own processing timeline that agencies must accommodate. Missing these deadlines can result in coverage gaps that trigger automatic policy cancellations or federal compliance violations. Additionally, when policies are modified or renewed, agencies must update endorsement filings accordingly. The administrative burden multiplies when agencies serve multiple carriers across different states, each with varying regulatory requirements and processing procedures."
+      },
+      {
+        "heading": "Technology Solutions for MCS-90 Management",
+        "body": "Modern insurance agencies increasingly rely on automation to manage the complexity of trucking insurance compliance, including proper handling of MCS-90 endorsements. Advanced systems can automatically verify coverage amounts against federal requirements, generate properly formatted certificates, and track filing deadlines across multiple jurisdictions. These platforms integrate endorsement information directly into certificate generation workflows, ensuring consistent documentation that meets both regulatory and commercial requirements. Automated systems also provide audit trails that demonstrate compliance efforts during regulatory reviews. However, technology only works when agencies understand the underlying requirements and configure their systems appropriately. The combination of regulatory knowledge and efficient processing tools enables agencies to serve trucking clients more effectively while reducing compliance risks. Smart agencies leverage these capabilities to differentiate their services in an increasingly competitive market."
+      }
+    ],
+    "faq": [
+      {
+        "question": "What is an MCS-90 endorsement in trucking insurance?",
+        "answer": "An MCS-90 endorsement is a federal requirement that ensures insurance companies remain liable to the public for covered claims, even if the trucking company violates policy terms. It protects third parties by creating direct insurer obligations under federal motor carrier regulations."
+      },
+      {
+        "question": "How much coverage do MCS-90 endorsements require?",
+        "answer": "Coverage amounts vary by carrier type and cargo: $750,000 for non-hazardous freight, $1 million for most hazardous materials, and $5 million for specific high-risk substances. Private carriers may have different requirements based on their operations."
+      },
+      {
+        "question": "Where must MCS-90 endorsements be filed?",
+        "answer": "MCS-90 endorsements must be filed with both state insurance departments where the policy is written and the Federal Motor Carrier Safety Administration. Both filings are required, with specific timing requirements for each jurisdiction."
+      }
+    ],
+    "cta": "CertFlo's AI-powered system ensures your trucking certificates always include proper MCS-90 endorsement documentation, eliminating compliance gaps that cost agencies time and credibility."
+  },
+  {
     "slug": "csrs-losing-hours-certificate-requests-how-to-fix",
     "title": "Why Your CSRs Are Losing Hours to Certificate Requests And How to Fix It",
     "date": "2026-03-11",
