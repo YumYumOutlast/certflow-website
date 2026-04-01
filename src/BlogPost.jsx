@@ -170,27 +170,15 @@ export default function BlogPost() {
             }}>
               Join thousands learning how to use AI automation to future-proof their careers.
             </p>
-            {/* Beehiiv embed will go here */}
-            <div id="beehiiv-embed" style={{
-              display: "flex", gap: 10, flexWrap: "wrap",
-            }}>
-              <input
-                type="email"
-                placeholder="Enter your email"
-                style={{
-                  flex: "1 1 200px", padding: "11px 14px", borderRadius: 8,
-                  background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)",
-                  color: "#E8E6F0", fontSize: 14, fontFamily: "'Inter', sans-serif",
-                  outline: "none",
-                }}
-              />
-              <button style={{
-                background: "linear-gradient(135deg, #00D4AA, #6C63FF)",
-                border: "none", color: "#fff", padding: "11px 24px",
-                borderRadius: 8, fontSize: 13, fontWeight: 700,
-                fontFamily: "'Inter', sans-serif", cursor: "pointer",
-              }}>Subscribe</button>
-            </div>
+            <iframe
+              src="https://getfluxe.beehiiv.com/subscribe"
+              style={{
+                width: "100%", maxWidth: 480, height: 52, border: "none",
+                borderRadius: 10, background: "transparent",
+                colorScheme: "dark",
+              }}
+              title="Subscribe to FlowState"
+            />
           </div>
         </article>
 

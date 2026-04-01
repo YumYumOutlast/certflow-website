@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 const COLORS = {
   bg: "#111118",
@@ -18,63 +18,17 @@ const GUMROAD = {
   consultant: "https://getfluxe.gumroad.com/l/ConsultantKit",
 };
 
-function EmailCapture({ id }) {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (email) {
-      // Placeholder — will be replaced with Beehiiv embed/POST
-      setSubmitted(true);
-    }
-  };
-
-  if (submitted) {
-    return (
-      <div style={{
-        background: "rgba(0,212,170,0.08)", border: "1px solid rgba(0,212,170,0.25)",
-        borderRadius: 12, padding: "24px 32px", textAlign: "center",
-      }}>
-        <div style={{ fontSize: 24, marginBottom: 8 }}>&#10003;</div>
-        <div style={{ fontSize: 16, fontWeight: 700, color: COLORS.teal, fontFamily: "'Inter', sans-serif" }}>
-          You're in.
-        </div>
-        <div style={{ fontSize: 13, color: COLORS.textMuted, marginTop: 4, fontFamily: "'Inter', sans-serif" }}>
-          Check your inbox for the free FlowState guide.
-        </div>
-      </div>
-    );
-  }
-
+function BeehiivEmbed() {
   return (
-    <form onSubmit={handleSubmit} id={id} style={{
-      display: "flex", gap: 12, maxWidth: 480, width: "100%",
-      flexWrap: "wrap", justifyContent: "center",
-    }}>
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Enter your email"
-        required
-        style={{
-          flex: "1 1 260px", padding: "14px 18px", borderRadius: 10,
-          background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)",
-          color: COLORS.text, fontSize: 15, fontFamily: "'Inter', sans-serif",
-          outline: "none", minWidth: 0,
-        }}
-      />
-      <button type="submit" style={{
-        padding: "14px 28px", borderRadius: 10,
-        background: `linear-gradient(135deg, ${COLORS.teal}, ${COLORS.purple})`,
-        border: "none", color: "#fff", fontSize: 14, fontWeight: 700,
-        fontFamily: "'Inter', sans-serif", cursor: "pointer", letterSpacing: 0.5,
-        whiteSpace: "nowrap",
-      }}>
-        Get the Free Guide
-      </button>
-    </form>
+    <iframe
+      src="https://getfluxe.beehiiv.com/subscribe"
+      style={{
+        width: "100%", maxWidth: 480, height: 52, border: "none",
+        borderRadius: 10, background: "transparent",
+        colorScheme: "dark",
+      }}
+      title="Subscribe to FlowState"
+    />
   );
 }
 
@@ -127,11 +81,11 @@ function Hero() {
         </p>
 
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <EmailCapture id="hero-email" />
+          <BeehiivEmbed />
         </div>
 
         <div style={{
-          marginTop: 20, fontSize: 12, color: COLORS.textDim,
+          marginTop: 12, fontSize: 12, color: COLORS.textDim,
           fontFamily: "'Inter', sans-serif",
         }}>
           Free. No spam. Unsubscribe anytime.
@@ -438,7 +392,7 @@ function BottomCTA() {
           Get the free FlowState guide and start building your AI advantage today.
         </p>
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <EmailCapture id="bottom-email" />
+          <BeehiivEmbed />
         </div>
       </div>
     </section>
