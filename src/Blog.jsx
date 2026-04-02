@@ -13,7 +13,7 @@ export default function Blog() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "Blog | CertFlo — AI Automation Insights";
+    document.title = "Blog | CertFlo — AI Workflow Insights";
   }, []);
 
   return (
@@ -46,7 +46,7 @@ export default function Blog() {
             fontSize: 17, color: "#8A8A9A", lineHeight: 1.7,
             fontFamily: "'Inter', sans-serif", maxWidth: 560, margin: 0,
           }}>
-            AI automation insights, career strategies, and deep dives into the tools reshaping every industry.
+            AI workflow insights, productivity strategies, and deep dives into the tools that make you faster.
           </p>
         </div>
       </div>
@@ -68,7 +68,7 @@ export default function Blog() {
               fontSize: 15, color: "#8A8A9A", fontFamily: "'Inter', sans-serif",
               maxWidth: 400, margin: "0 auto", lineHeight: 1.6,
             }}>
-              We're working on deep-dive articles about AI automation, career strategy, and the future of work.
+              We're working on deep-dive articles about AI workflows, productivity, and working smarter.
             </p>
           </div>
         ) : (

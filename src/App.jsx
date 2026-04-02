@@ -103,7 +103,7 @@ function Nav() {
               fontFamily: "'Inter', sans-serif", cursor: "pointer",
               letterSpacing: 1, textDecoration: "none",
             }}
-          >GET FLOWSTATE FREE</a>
+          >GET THE FREE GUIDE</a>
         </div>
 
         {/* Mobile hamburger */}
@@ -146,7 +146,7 @@ function Nav() {
               fontFamily: "'Inter', sans-serif", textDecoration: "none",
               textAlign: "center", marginTop: 4,
             }}
-          >GET FLOWSTATE FREE</a>
+          >GET THE FREE GUIDE</a>
         </div>
       )}
     </nav>
@@ -177,7 +177,7 @@ function Footer() {
             fontSize: 13, color: COLORS.textDim, lineHeight: 1.6,
             fontFamily: "'Inter', sans-serif",
           }}>
-            AI automation education and tools.
+            AI workflow tools and education.
           </div>
         </div>
 

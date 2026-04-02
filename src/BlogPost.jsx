@@ -168,7 +168,7 @@ export default function BlogPost() {
               fontSize: 13, color: "#8A8A9A", lineHeight: 1.6,
               fontFamily: "'Inter', sans-serif", marginBottom: 20,
             }}>
-              Join thousands learning how to use AI automation to future-proof their careers.
+              5 workflows that quietly save 7+ hours a week. Free tools. No coding.
             </p>
             <iframe
               src="https://getfluxe.beehiiv.com/subscribe"
@@ -192,7 +192,7 @@ export default function BlogPost() {
           }}>
             <div style={{ fontSize: 9, fontFamily: "monospace", letterSpacing: "0.25em", color: "#00D4AA", marginBottom: 12 }}>ABOUT</div>
             <p style={{ fontSize: 12, color: "#8A8A9A", lineHeight: 1.6, marginBottom: 14, fontFamily: "'Inter', sans-serif" }}>
-              CertFlo builds AI automation tools and education. FlowState is our flagship product line helping people stay ahead of the AI shift.
+              CertFlo builds AI workflow tools and education. FlowState is our flagship guide helping people work smarter and faster with AI.
             </p>
             <span onClick={() => window.open("https://getfluxe.gumroad.com/l/FlowState", "_blank")} style={{
               fontSize: 11, fontFamily: "monospace", color: "#00D4AA", cursor: "pointer",

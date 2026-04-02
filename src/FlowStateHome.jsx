@@ -55,7 +55,7 @@ function Hero() {
           fontSize: 11, letterSpacing: "0.14em", color: COLORS.teal,
           textTransform: "uppercase", fontFamily: "'Inter', sans-serif",
         }}>
-          FlowState by CertFlo
+          FREE GUIDE
         </div>
 
         <h1 style={{
@@ -63,12 +63,12 @@ function Hero() {
           fontFamily: "'Inter', sans-serif",
           color: COLORS.text, lineHeight: 1.15, margin: "0 0 24px 0",
         }}>
-          AI is automating your job.
+          Most people are doing work
           <br />
           <span style={{
             background: `linear-gradient(135deg, ${COLORS.teal}, ${COLORS.purple})`,
             WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
-          }}>This is how you stay ahead.</span>
+          }}>a machine should be doing.</span>
         </h1>
 
         <p style={{
@@ -76,8 +76,8 @@ function Hero() {
           margin: "0 auto 40px", maxWidth: 520,
           fontFamily: "'Inter', sans-serif",
         }}>
-          The FlowState guide shows you exactly how to use AI automation to
-          future-proof your career — before it's too late.
+          FlowState shows you the 5 workflows that quietly save 7+ hours a week.
+          Free tools. No coding. Set up each one in 10 minutes.
         </p>
 
         <div style={{ display: "flex", justifyContent: "center" }}>
@@ -97,9 +97,10 @@ function Hero() {
 
 function StatCards() {
   const stats = [
-    { num: "85M", label: "Jobs at risk of AI automation worldwide", color: COLORS.teal },
-    { num: "1.1M", label: "Tech layoffs in 2024-2025 alone", color: COLORS.purple },
-    { num: "18 mo", label: "Until full automation hits most roles", color: COLORS.teal },
+    { num: "7+ hrs/week", label: "Average time reclaimed", color: COLORS.teal },
+    { num: "$0", label: "Everything uses free tools", color: COLORS.purple },
+    { num: "10 min", label: "Setup time per workflow", color: COLORS.teal },
+    { num: "23K+", label: "Downloads and counting", color: COLORS.purple },
   ];
 
   return (
@@ -113,16 +114,16 @@ function StatCards() {
           <div style={{
             fontSize: 11, fontFamily: "monospace", color: COLORS.teal,
             letterSpacing: 4, marginBottom: 12,
-          }}>THE REALITY</div>
+          }}>THE NUMBERS</div>
           <h2 style={{
             fontSize: "clamp(26px, 4vw, 40px)", fontWeight: 800,
             fontFamily: "'Inter', sans-serif",
             color: COLORS.text, margin: 0,
-          }}>The shift is already happening.</h2>
+          }}>Work smarter, not longer.</h2>
         </div>
         <div style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
           gap: 20,
         }}>
           {stats.map((s) => (
@@ -133,11 +134,11 @@ function StatCards() {
             }}>
               <div style={{
                 position: "absolute", top: -20, right: -10,
-                fontSize: 100, fontWeight: 900, color: s.color,
+                fontSize: 80, fontWeight: 900, color: s.color,
                 opacity: 0.04, fontFamily: "monospace",
               }}>{s.num}</div>
               <div style={{
-                fontSize: 42, fontWeight: 900, color: s.color,
+                fontSize: 36, fontWeight: 900, color: s.color,
                 fontFamily: "monospace", marginBottom: 8,
               }}>{s.num}</div>
               <div style={{
@@ -155,45 +156,45 @@ function StatCards() {
 function ProductTiers() {
   const tiers = [
     {
-      name: "FlowState Guide",
+      name: "FlowState",
       price: "Free",
-      priceNote: "Lead magnet",
-      desc: "The AI automation survival guide. Understand what's coming, what jobs are at risk, and the exact framework to stay ahead.",
-      features: ["AI job displacement overview", "The FlowState framework", "Automation readiness checklist", "Career pivot strategies"],
-      cta: "Download Free",
+      priceNote: "",
+      desc: "5 workflows that handle your email, meetings, spreadsheets, and reports while you focus on the stuff that actually matters.",
+      features: ["5 ready-to-use workflows", "Free tools only", "10-minute setup each", "No coding required"],
+      cta: "Get it free",
       url: GUMROAD.free,
       color: COLORS.teal,
       featured: false,
     },
     {
-      name: "Starter Kit",
-      price: "$9",
+      name: "The AI-Proof Starter Kit",
+      price: "$27",
       priceNote: "One-time",
-      desc: "Your first AI automation toolkit. Templates, prompts, and workflows to start automating real tasks today.",
-      features: ["10 automation templates", "AI prompt library", "Workflow blueprints", "Tool recommendations"],
-      cta: "Get the Starter Kit",
+      desc: "15 workflows across 5 departments. The cheat sheet for plugging AI into every corner of your job.",
+      features: ["15 department workflows", "Plug-and-play templates", "AI prompt library", "Tool recommendations"],
+      cta: "See what's inside",
       url: GUMROAD.starter,
       color: COLORS.purple,
       featured: false,
     },
     {
-      name: "Playbook",
-      price: "$37",
+      name: "The AI-Proof Playbook",
+      price: "$79",
       priceNote: "One-time",
-      desc: "The complete AI automation playbook. Go from understanding AI to building real automated systems for your work.",
-      features: ["Full automation playbook", "Step-by-step system builds", "Revenue automation strategies", "Private community access"],
-      cta: "Get the Playbook",
+      desc: "Stop following templates. Start building your own. The full system for becoming the person on your team everyone asks 'how did you do that so fast.'",
+      features: ["Custom workflow builder", "Advanced automation systems", "Full prompt engineering guide", "Private community access"],
+      cta: "See what's inside",
       url: GUMROAD.playbook,
       color: COLORS.teal,
       featured: true,
     },
     {
-      name: "Consultant Kit",
-      price: "$97",
+      name: "The Automation Consultant Kit",
+      price: "$149",
       priceNote: "One-time",
-      desc: "Everything you need to start selling AI automation as a service. Pitch decks, proposals, pricing frameworks, and client workflows.",
+      desc: "Everything you need to start getting paid for what you just learned. Proposal templates, pricing, scripts, and a client playbook.",
       features: ["Client proposal templates", "Pricing & packaging guide", "Sales scripts & outreach", "Done-for-you deliverables"],
-      cta: "Get the Consultant Kit",
+      cta: "See what's inside",
       url: GUMROAD.consultant,
       color: COLORS.purple,
       featured: false,
@@ -216,12 +217,12 @@ function ProductTiers() {
             fontSize: "clamp(26px, 4vw, 40px)", fontWeight: 800,
             fontFamily: "'Inter', sans-serif",
             color: COLORS.text, margin: "0 0 12px 0",
-          }}>Pick your level.</h2>
+          }}>Start free. Go as deep as you want.</h2>
           <p style={{
             fontSize: 16, color: COLORS.textMuted, fontFamily: "'Inter', sans-serif",
             maxWidth: 480, margin: "0 auto", lineHeight: 1.6,
           }}>
-            Start free. Go deeper when you're ready.
+            Pick your level. Every tier builds on the last.
           </p>
         </div>
 
@@ -259,10 +260,10 @@ function ProductTiers() {
                   fontSize: 36, fontWeight: 900, color: COLORS.text,
                   fontFamily: "'Inter', sans-serif",
                 }}>{t.price}</span>
-                <span style={{
+                {t.priceNote && <span style={{
                   fontSize: 12, color: COLORS.textDim,
                   fontFamily: "'Inter', sans-serif",
-                }}>{t.priceNote}</span>
+                }}>{t.priceNote}</span>}
               </div>
               <p style={{
                 fontSize: 13, color: COLORS.textMuted, lineHeight: 1.6,
@@ -306,12 +307,11 @@ function ProductTiers() {
 
 function Preview() {
   const items = [
-    { icon: "\u{1F4CA}", title: "AI Job Risk Framework", desc: "Understand exactly which roles are at risk and the timeline for automation across industries." },
-    { icon: "\u{1F9E0}", title: "The FlowState Method", desc: "A step-by-step system for positioning yourself on the right side of the AI shift." },
-    { icon: "\u{1F527}", title: "Automation Blueprints", desc: "Real workflows you can implement today to automate tasks and increase your output 10x." },
-    { icon: "\u{1F4B0}", title: "Monetization Playbook", desc: "Turn AI skills into income streams — freelancing, consulting, or building automated products." },
-    { icon: "\u{1F680}", title: "Tool & Prompt Library", desc: "Curated tools, templates, and prompts tested across real business use cases." },
-    { icon: "\u{1F91D}", title: "Consultant Frameworks", desc: "Pitch decks, proposals, and pricing strategies to sell AI automation as a service." },
+    { icon: "\u{2709}\u{FE0F}", title: "Email Autopilot", desc: "Stop writing the same emails from scratch. 45 minutes back every day." },
+    { icon: "\u{1F4DD}", title: "Meeting Notes AI", desc: "Walk out of meetings with a clean summary you didn't have to write." },
+    { icon: "\u{1F4CA}", title: "Spreadsheet Magic", desc: "Formulas, formatting, and analysis in one prompt." },
+    { icon: "\u{26A1}", title: "Zapier Automations", desc: "Connect your apps so things happen without you touching them." },
+    { icon: "\u{1F4C4}", title: "One-Prompt Reports", desc: "Paste your data, get a finished report. 3 hours back every week." },
   ];
 
   return (
@@ -330,12 +330,12 @@ function Preview() {
             fontSize: "clamp(26px, 4vw, 40px)", fontWeight: 800,
             fontFamily: "'Inter', sans-serif",
             color: COLORS.text, margin: "0 0 12px 0",
-          }}>Everything you need to stay ahead.</h2>
+          }}>What you're getting</h2>
           <p style={{
             fontSize: 16, color: COLORS.textMuted, fontFamily: "'Inter', sans-serif",
             maxWidth: 480, margin: "0 auto", lineHeight: 1.6,
           }}>
-            From understanding the threat to building a new income stream.
+            5 workflows. Each one saves real time. All free tools.
           </p>
         </div>
 
@@ -383,13 +383,13 @@ function BottomCTA() {
           fontSize: "clamp(26px, 4vw, 40px)", fontWeight: 800,
           fontFamily: "'Inter', sans-serif",
           color: COLORS.text, margin: "0 0 16px 0",
-        }}>Don't get left behind.</h2>
+        }}>Your coworkers are going to wonder how you got so fast.</h2>
         <p style={{
           fontSize: 16, color: COLORS.textMuted, lineHeight: 1.7,
           fontFamily: "'Inter', sans-serif",
           margin: "0 auto 36px", maxWidth: 440,
         }}>
-          Get the free FlowState guide and start building your AI advantage today.
+          It starts with 5 workflows. Takes 10 minutes. Costs nothing.
         </p>
         <div style={{ display: "flex", justifyContent: "center" }}>
           <BeehiivEmbed />
