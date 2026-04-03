@@ -2,6 +2,98 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getPostBySlug, getAllPosts } from "./posts/index.jsx";
 
+const COLORS = {
+  teal: "#00D4AA",
+  purple: "#6C63FF",
+  text: "#E8E6F0",
+  border: "rgba(255,255,255,0.06)",
+};
+
+function EmailCapture() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState("idle");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!email || !email.includes("@")) return;
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setStatus("success");
+        setMessage(data.message || "You're in! Check your inbox.");
+        setEmail("");
+      } else {
+        setStatus("error");
+        setMessage(data.error || "Something went wrong. Try again.");
+      }
+    } catch {
+      setStatus("error");
+      setMessage("Network error. Please try again.");
+    }
+  };
+
+  if (status === "success") {
+    return (
+      <div style={{
+        padding: "14px 24px", borderRadius: 10,
+        background: "rgba(0,212,170,0.08)",
+        border: "1px solid rgba(0,212,170,0.25)",
+        color: COLORS.teal, fontSize: 14, fontWeight: 600,
+        fontFamily: "'Inter', sans-serif",
+        textAlign: "center", maxWidth: 480, width: "100%",
+      }}>
+        {message}
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} style={{
+      display: "flex", gap: 8, width: "100%", maxWidth: 480,
+    }}>
+      <input
+        type="email"
+        placeholder="Enter your email"
+        value={email}
+        onChange={(e) => { setEmail(e.target.value); setStatus("idle"); }}
+        required
+        style={{
+          flex: 1, padding: "12px 16px", borderRadius: 10,
+          border: status === "error"
+            ? "1px solid rgba(255,80,80,0.4)"
+            : `1px solid ${COLORS.border}`,
+          background: "rgba(255,255,255,0.04)",
+          color: COLORS.text, fontSize: 14,
+          fontFamily: "'Inter', sans-serif",
+          outline: "none",
+        }}
+      />
+      <button
+        type="submit"
+        disabled={status === "loading"}
+        style={{
+          padding: "12px 24px", borderRadius: 10, border: "none",
+          background: `linear-gradient(135deg, ${COLORS.teal}, ${COLORS.purple})`,
+          color: "#fff", fontSize: 13, fontWeight: 700,
+          fontFamily: "'Inter', sans-serif",
+          cursor: status === "loading" ? "wait" : "pointer",
+          opacity: status === "loading" ? 0.7 : 1,
+          whiteSpace: "nowrap",
+        }}
+      >
+        {status === "loading" ? "Joining..." : "Get it free"}
+      </button>
+    </form>
+  );
+}
+
 function formatDate(dateStr) {
   try {
     return new Date(dateStr).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
@@ -152,7 +244,7 @@ export default function BlogPost() {
             </div>
           )}
 
-          {/* Beehiiv email capture placeholder */}
+          {/* Email capture */}
           <div style={{
             background: "rgba(0,212,170,0.04)",
             border: "1px solid rgba(0,212,170,0.15)",
@@ -170,15 +262,7 @@ export default function BlogPost() {
             }}>
               5 workflows that quietly save 7+ hours a week. Free tools. No coding.
             </p>
-            <iframe
-              src="https://getfluxe.beehiiv.com/subscribe"
-              style={{
-                width: "100%", maxWidth: 480, height: 52, border: "none",
-                borderRadius: 10, background: "transparent",
-                colorScheme: "dark",
-              }}
-              title="Subscribe to FlowState"
-            />
+            <EmailCapture />
           </div>
         </article>
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const COLORS = {
   bg: "#111118",
@@ -18,17 +18,88 @@ const GUMROAD = {
   consultant: "https://getfluxe.gumroad.com/l/ConsultantKit",
 };
 
-function BeehiivEmbed() {
+function EmailCapture() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState("idle"); // idle | loading | success | error
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!email || !email.includes("@")) return;
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setStatus("success");
+        setMessage(data.message || "You're in! Check your inbox.");
+        setEmail("");
+      } else {
+        setStatus("error");
+        setMessage(data.error || "Something went wrong. Try again.");
+      }
+    } catch {
+      setStatus("error");
+      setMessage("Network error. Please try again.");
+    }
+  };
+
+  if (status === "success") {
+    return (
+      <div style={{
+        padding: "14px 24px", borderRadius: 10,
+        background: "rgba(0,212,170,0.08)",
+        border: "1px solid rgba(0,212,170,0.25)",
+        color: COLORS.teal, fontSize: 14, fontWeight: 600,
+        fontFamily: "'Inter', sans-serif",
+        textAlign: "center", maxWidth: 480, width: "100%",
+      }}>
+        {message}
+      </div>
+    );
+  }
+
   return (
-    <iframe
-      src="https://getfluxe.beehiiv.com/subscribe"
-      style={{
-        width: "100%", maxWidth: 480, height: 52, border: "none",
-        borderRadius: 10, background: "transparent",
-        colorScheme: "dark",
-      }}
-      title="Subscribe to FlowState"
-    />
+    <form onSubmit={handleSubmit} style={{
+      display: "flex", gap: 8, width: "100%", maxWidth: 480,
+    }}>
+      <input
+        type="email"
+        placeholder="Enter your email"
+        value={email}
+        onChange={(e) => { setEmail(e.target.value); setStatus("idle"); }}
+        required
+        style={{
+          flex: 1, padding: "12px 16px", borderRadius: 10,
+          border: status === "error"
+            ? "1px solid rgba(255,80,80,0.4)"
+            : `1px solid ${COLORS.border}`,
+          background: "rgba(255,255,255,0.04)",
+          color: COLORS.text, fontSize: 14,
+          fontFamily: "'Inter', sans-serif",
+          outline: "none",
+        }}
+      />
+      <button
+        type="submit"
+        disabled={status === "loading"}
+        style={{
+          padding: "12px 24px", borderRadius: 10, border: "none",
+          background: `linear-gradient(135deg, ${COLORS.teal}, ${COLORS.purple})`,
+          color: "#fff", fontSize: 13, fontWeight: 700,
+          fontFamily: "'Inter', sans-serif",
+          cursor: status === "loading" ? "wait" : "pointer",
+          opacity: status === "loading" ? 0.7 : 1,
+          whiteSpace: "nowrap",
+        }}
+      >
+        {status === "loading" ? "Joining..." : "Get it free"}
+      </button>
+    </form>
   );
 }
 
@@ -81,7 +152,7 @@ function Hero() {
         </p>
 
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <BeehiivEmbed />
+          <EmailCapture />
         </div>
 
         <div style={{
@@ -392,7 +463,7 @@ function BottomCTA() {
           It starts with 5 workflows. Takes 10 minutes. Costs nothing.
         </p>
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <BeehiivEmbed />
+          <EmailCapture />
         </div>
       </div>
     </section>
