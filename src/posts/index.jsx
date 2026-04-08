@@ -1,4 +1,6 @@
+import post_ai_job_displacement_myth_why_tech_jobs_are_actually_surging from "./ai-job-displacement-myth-why-tech-jobs-are-actually-surging.json";
 export const posts = [
+posts.push(post_ai_job_displacement_myth_why_tech_jobs_are_actually_surging);
   {
     "slug": "why-csrs-lose-hours-certificate-requests-how-to-fix",
     "title": "Why Your CSRs Are Losing Hours to Certificate Requests And How to Fix It",
