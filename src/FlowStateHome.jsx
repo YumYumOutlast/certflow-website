@@ -161,6 +161,18 @@ function Hero() {
         }}>
           Free. No spam. Unsubscribe anytime.
         </div>
+
+        <a href="/blog" style={{
+          display: "inline-block", marginTop: 32,
+          padding: "12px 28px", borderRadius: 10,
+          background: "rgba(255,255,255,0.05)",
+          border: `1px solid rgba(108,99,255,0.35)`,
+          color: COLORS.text, fontSize: 13, fontWeight: 700,
+          fontFamily: "'Inter', sans-serif",
+          textDecoration: "none", letterSpacing: 0.5,
+        }}>
+          AI Insights &amp; Tips &rarr;
+        </a>
       </div>
     </section>
   );
