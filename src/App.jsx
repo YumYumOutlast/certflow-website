@@ -5,6 +5,7 @@ import Insurance from "./Insurance.jsx";
 import Blog from "./Blog.jsx";
 import BlogPost from "./BlogPost.jsx";
 import CommandCenter from "./CommandCenter.jsx";
+import About from "./About.jsx";
 
 const COLORS = {
   bg: "#111118",
@@ -38,6 +39,7 @@ function Nav() {
     { label: "FlowState", path: "/" },
     { label: "Insurance", path: "/insurance" },
     { label: "Blog", path: "/blog" },
+    { label: "About", path: "/about" },
   ];
 
   return (
@@ -191,6 +193,7 @@ function Footer() {
             { label: "FlowState", action: () => navigate("/") },
             { label: "Insurance (CertFlo)", action: () => navigate("/insurance") },
             { label: "Blog", action: () => navigate("/blog") },
+            { label: "About", action: () => navigate("/about") },
           ].map((l) => (
             <div key={l.label}
               onClick={l.action}
@@ -293,6 +296,7 @@ export default function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/engine" element={<CommandCenter />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </Layout>
     </BrowserRouter>
