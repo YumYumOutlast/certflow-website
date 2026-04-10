@@ -1,6 +1,8 @@
 import post_ai_job_displacement_myth_why_tech_jobs_are_actually_surging from "./ai-job-displacement-myth-why-tech-jobs-are-actually-surging.json";
 import post_ai_agents_wallets_x402_what_it_means_for_your_business from "./ai-agents-wallets-x402-what-it-means-for-your-business.json";
+import post_78k_tech_layoffs_in_q1_ai_job_displacement_is_here from "./78k-tech-layoffs-in-q1-ai-job-displacement-is-here.json";
 export const posts = [
+  post_78k_tech_layoffs_in_q1_ai_job_displacement_is_here,
   post_ai_agents_wallets_x402_what_it_means_for_your_business,
   post_ai_job_displacement_myth_why_tech_jobs_are_actually_surging,
   {
