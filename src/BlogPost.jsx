@@ -208,10 +208,13 @@ export default function BlogPost() {
                 fontFamily: "'Inter', sans-serif",
                 color: "#E8E6F0", lineHeight: 1.3, margin: "0 0 14px 0",
               }}>{s.heading}</h2>
-              <p style={{
-                fontSize: 15, color: "#8A8A9A", lineHeight: 1.85,
-                fontFamily: "'Inter', sans-serif", margin: 0,
-              }}>{s.body}</p>
+              <p
+                style={{
+                  fontSize: 15, color: "#8A8A9A", lineHeight: 1.85,
+                  fontFamily: "'Inter', sans-serif", margin: 0,
+                }}
+                dangerouslySetInnerHTML={{ __html: s.body }}
+              />
             </div>
           ))}
 
