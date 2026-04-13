@@ -2,7 +2,9 @@ import post_ai_job_displacement_myth_why_tech_jobs_are_actually_surging from "./
 import post_ai_agents_wallets_x402_what_it_means_for_your_business from "./ai-agents-wallets-x402-what-it-means-for-your-business.json";
 import post_78k_tech_layoffs_in_q1_ai_job_displacement_is_here from "./78k-tech-layoffs-in-q1-ai-job-displacement-is-here.json";
 import post_ai_displaces_78_557_tech_workers_in_q1_2026_your_survival_gu from "./ai-displaces-78-557-tech-workers-in-q1-2026-your-survival-gu.json";
+import post_how_78_557_tech_layoffs_created_the_biggest_ai_skills_gap_in from "./how-78-557-tech-layoffs-created-the-biggest-ai-skills-gap-in.json";
 export const posts = [
+  post_how_78_557_tech_layoffs_created_the_biggest_ai_skills_gap_in,
   post_ai_displaces_78_557_tech_workers_in_q1_2026_your_survival_gu,
   post_78k_tech_layoffs_in_q1_ai_job_displacement_is_here,
   post_ai_agents_wallets_x402_what_it_means_for_your_business,
