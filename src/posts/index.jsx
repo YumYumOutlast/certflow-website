@@ -4,7 +4,9 @@ import post_78k_tech_layoffs_in_q1_ai_job_displacement_is_here from "./78k-tech-
 import post_ai_displaces_78_557_tech_workers_in_q1_2026_your_survival_gu from "./ai-displaces-78-557-tech-workers-in-q1-2026-your-survival-gu.json";
 import post_how_78_557_tech_layoffs_created_the_biggest_ai_skills_gap_in from "./how-78-557-tech-layoffs-created-the-biggest-ai-skills-gap-in.json";
 import post_ai_automation_creates_massive_opportunity_while_others_get_l from "./ai-automation-creates-massive-opportunity-while-others-get-l.json";
+import post_economists_reverse_course_on_ai_jobs_here_s_your_advantage from "./economists-reverse-course-on-ai-jobs-here-s-your-advantage.json";
 export const posts = [
+  post_economists_reverse_course_on_ai_jobs_here_s_your_advantage,
   post_ai_automation_creates_massive_opportunity_while_others_get_l,
   post_how_78_557_tech_layoffs_created_the_biggest_ai_skills_gap_in,
   post_ai_displaces_78_557_tech_workers_in_q1_2026_your_survival_gu,
