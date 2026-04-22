@@ -6,7 +6,9 @@ import post_how_78_557_tech_layoffs_created_the_biggest_ai_skills_gap_in from ".
 import post_ai_automation_creates_massive_opportunity_while_others_get_l from "./ai-automation-creates-massive-opportunity-while-others-get-l.json";
 import post_economists_reverse_course_on_ai_jobs_here_s_your_advantage from "./economists-reverse-course-on-ai-jobs-here-s-your-advantage.json";
 import post_the_ai_layoff_playbook_why_smart_workers_are_getting_ahead_r from "./the-ai-layoff-playbook-why-smart-workers-are-getting-ahead-r.json";
+import post_voice_ai_revolution_how_smart_workers_turn_industry_disrupti from "./voice-ai-revolution-how-smart-workers-turn-industry-disrupti.json";
 export const posts = [
+  post_voice_ai_revolution_how_smart_workers_turn_industry_disrupti,
   post_the_ai_layoff_playbook_why_smart_workers_are_getting_ahead_r,
   post_economists_reverse_course_on_ai_jobs_here_s_your_advantage,
   post_ai_automation_creates_massive_opportunity_while_others_get_l,
