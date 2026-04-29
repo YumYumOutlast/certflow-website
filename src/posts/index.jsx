@@ -9,7 +9,9 @@ import post_the_ai_layoff_playbook_why_smart_workers_are_getting_ahead_r from ".
 import post_voice_ai_revolution_how_smart_workers_turn_industry_disrupti from "./voice-ai-revolution-how-smart-workers-turn-industry-disrupti.json";
 import post_wall_street_ai_automation_creates_new_opportunities_for_smar from "./wall-street-ai-automation-creates-new-opportunities-for-smar.json";
 import post_meta_s_8_000_layoffs_signal_the_ai_skills_gap_is_real from "./meta-s-8-000-layoffs-signal-the-ai-skills-gap-is-real.json";
+import post_wall_street_s_ai_wave_your_competitive_edge_is_here from "./wall-street-s-ai-wave-your-competitive-edge-is-here.json";
 export const posts = [
+  post_wall_street_s_ai_wave_your_competitive_edge_is_here,
   post_meta_s_8_000_layoffs_signal_the_ai_skills_gap_is_real,
   post_wall_street_ai_automation_creates_new_opportunities_for_smar,
   post_voice_ai_revolution_how_smart_workers_turn_industry_disrupti,
