@@ -11,7 +11,9 @@ import post_wall_street_ai_automation_creates_new_opportunities_for_smar from ".
 import post_meta_s_8_000_layoffs_signal_the_ai_skills_gap_is_real from "./meta-s-8-000-layoffs-signal-the-ai-skills-gap-is-real.json";
 import post_wall_street_s_ai_wave_your_competitive_edge_is_here from "./wall-street-s-ai-wave-your-competitive-edge-is-here.json";
 import post_tech_layoffs_signal_your_ai_competitive_advantage_opportunit from "./tech-layoffs-signal-your-ai-competitive-advantage-opportunit.json";
+import post_aws_ceo_ai_creates_more_jobs_not_fewer_here_s_your_move from "./aws-ceo-ai-creates-more-jobs-not-fewer-here-s-your-move.json";
 export const posts = [
+  post_aws_ceo_ai_creates_more_jobs_not_fewer_here_s_your_move,
   post_tech_layoffs_signal_your_ai_competitive_advantage_opportunit,
   post_wall_street_s_ai_wave_your_competitive_edge_is_here,
   post_meta_s_8_000_layoffs_signal_the_ai_skills_gap_is_real,
