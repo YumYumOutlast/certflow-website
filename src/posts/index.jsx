@@ -12,7 +12,9 @@ import post_meta_s_8_000_layoffs_signal_the_ai_skills_gap_is_real from "./meta-s
 import post_wall_street_s_ai_wave_your_competitive_edge_is_here from "./wall-street-s-ai-wave-your-competitive-edge-is-here.json";
 import post_tech_layoffs_signal_your_ai_competitive_advantage_opportunit from "./tech-layoffs-signal-your-ai-competitive-advantage-opportunit.json";
 import post_aws_ceo_ai_creates_more_jobs_not_fewer_here_s_your_move from "./aws-ceo-ai-creates-more-jobs-not-fewer-here-s-your-move.json";
+import post_banks_are_redeploying_workers_with_ai_here_s_your_opportunit from "./banks-are-redeploying-workers-with-ai-here-s-your-opportunit.json";
 export const posts = [
+  post_banks_are_redeploying_workers_with_ai_here_s_your_opportunit,
   post_aws_ceo_ai_creates_more_jobs_not_fewer_here_s_your_move,
   post_tech_layoffs_signal_your_ai_competitive_advantage_opportunit,
   post_wall_street_s_ai_wave_your_competitive_edge_is_here,
