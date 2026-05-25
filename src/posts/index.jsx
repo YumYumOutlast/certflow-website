@@ -14,7 +14,9 @@ import post_tech_layoffs_signal_your_ai_competitive_advantage_opportunit from ".
 import post_aws_ceo_ai_creates_more_jobs_not_fewer_here_s_your_move from "./aws-ceo-ai-creates-more-jobs-not-fewer-here-s-your-move.json";
 import post_banks_are_redeploying_workers_with_ai_here_s_your_opportunit from "./banks-are-redeploying-workers-with-ai-here-s-your-opportunit.json";
 import post_while_others_panic_about_ai_smart_workers_build_their_advant from "./while-others-panic-about-ai-smart-workers-build-their-advant.json";
+import post_why_ai_automation_creates_the_biggest_learning_opportunity_i from "./why-ai-automation-creates-the-biggest-learning-opportunity-i.json";
 export const posts = [
+  post_why_ai_automation_creates_the_biggest_learning_opportunity_i,
   post_while_others_panic_about_ai_smart_workers_build_their_advant,
   post_banks_are_redeploying_workers_with_ai_here_s_your_opportunit,
   post_aws_ceo_ai_creates_more_jobs_not_fewer_here_s_your_move,
