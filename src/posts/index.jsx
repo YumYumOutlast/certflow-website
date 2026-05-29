@@ -16,7 +16,9 @@ import post_banks_are_redeploying_workers_with_ai_here_s_your_opportunit from ".
 import post_while_others_panic_about_ai_smart_workers_build_their_advant from "./while-others-panic-about-ai-smart-workers-build-their-advant.json";
 import post_why_ai_automation_creates_the_biggest_learning_opportunity_i from "./why-ai-automation-creates-the-biggest-learning-opportunity-i.json";
 import post_nvidia_ceo_executives_using_ai_as_lazy_excuse_for_layoffs from "./nvidia-ceo-executives-using-ai-as-lazy-excuse-for-layoffs.json";
+import post_ceos_blame_ai_for_layoffs_here_s_your_real_opportunity from "./ceos-blame-ai-for-layoffs-here-s-your-real-opportunity.json";
 export const posts = [
+  post_ceos_blame_ai_for_layoffs_here_s_your_real_opportunity,
   post_nvidia_ceo_executives_using_ai_as_lazy_excuse_for_layoffs,
   post_why_ai_automation_creates_the_biggest_learning_opportunity_i,
   post_while_others_panic_about_ai_smart_workers_build_their_advant,
