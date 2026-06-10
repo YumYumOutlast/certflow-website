@@ -21,7 +21,9 @@ import post_why_smart_workers_are_doubling_down_on_ai_skills_right_now from "./w
 import post_why_jensen_huang_says_ai_layoffs_are_lazy_and_what_it_means_ from "./why-jensen-huang-says-ai-layoffs-are-lazy-and-what-it-means-.json";
 import post_ceos_are_blaming_ai_for_layoffs_here_s_your_real_advantage from "./ceos-are-blaming-ai-for-layoffs-here-s-your-real-advantage.json";
 import post_ai_skills_beat_coding_skills_why_smart_workers_are_pivoting_ from "./ai-skills-beat-coding-skills-why-smart-workers-are-pivoting-.json";
+import post_hollywood_s_ai_split_shows_who_gets_ahead_and_who_gets_left_ from "./hollywood-s-ai-split-shows-who-gets-ahead-and-who-gets-left-.json";
 export const posts = [
+  post_hollywood_s_ai_split_shows_who_gets_ahead_and_who_gets_left_,
   post_ai_skills_beat_coding_skills_why_smart_workers_are_pivoting_,
   post_ceos_are_blaming_ai_for_layoffs_here_s_your_real_advantage,
   post_why_jensen_huang_says_ai_layoffs_are_lazy_and_what_it_means_,
