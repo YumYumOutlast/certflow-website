@@ -23,7 +23,9 @@ import post_ceos_are_blaming_ai_for_layoffs_here_s_your_real_advantage from "./c
 import post_ai_skills_beat_coding_skills_why_smart_workers_are_pivoting_ from "./ai-skills-beat-coding-skills-why-smart-workers-are-pivoting-.json";
 import post_hollywood_s_ai_split_shows_who_gets_ahead_and_who_gets_left_ from "./hollywood-s-ai-split-shows-who-gets-ahead-and-who-gets-left-.json";
 import post_half_of_customer_service_jobs_gone_by_2030_here_s_your_advan from "./half-of-customer-service-jobs-gone-by-2030-here-s-your-advan.json";
+import post_the_atlantic_says_can_ai_do_my_job_is_the_wrong_question from "./the-atlantic-says-can-ai-do-my-job-is-the-wrong-question.json";
 export const posts = [
+  post_the_atlantic_says_can_ai_do_my_job_is_the_wrong_question,
   post_half_of_customer_service_jobs_gone_by_2030_here_s_your_advan,
   post_hollywood_s_ai_split_shows_who_gets_ahead_and_who_gets_left_,
   post_ai_skills_beat_coding_skills_why_smart_workers_are_pivoting_,
